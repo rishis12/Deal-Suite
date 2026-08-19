@@ -1,0 +1,31 @@
+/* Deal Suite shell — product switcher in the shared header */
+
+.suite-header { gap: var(--space-4); flex-wrap: wrap; }
+
+.product-switch {
+  display: inline-flex;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.product-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.product-btn:hover:not(.active) { color: var(--text-primary); }
+
+.product-btn.active {
+  background: var(--accent);
+  color: #fff;
+}

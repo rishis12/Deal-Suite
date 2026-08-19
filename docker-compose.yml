@@ -1,0 +1,17 @@
+# Local container run of the merged Deal Suite API (both products, one
+# service). The frontend runs separately (`npm run dev` or Vercel).
+#
+#   SEC_CONTACT_EMAIL=you@example.com docker compose up --build
+#
+# Port 8002 on the host because 8000 may be occupied (e.g. by an old
+# aiolbo container that auto-starts with Docker Desktop).
+services:
+  api:
+    build: ./backend
+    ports:
+      - "8002:8000"
+    environment:
+      SEC_CONTACT_EMAIL: ${SEC_CONTACT_EMAIL:?SEC requires a contact email in the User-Agent}
+      TWELVE_DATA_API_KEY: ${TWELVE_DATA_API_KEY:-}
+      FRONTEND_URL: ${FRONTEND_URL:-}
+    restart: unless-stopped

@@ -1,0 +1,12 @@
+requests>=2.31.0
+openpyxl>=3.1.2
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+python-multipart>=0.0.9
+pydantic>=2.5.0
+# LLM providers are imported lazily inside the report generators but MUST be
+# listed here — a lazily-imported package missing from requirements.txt
+# silently broke every LLM call in AIO LBO's deployed container.
+anthropic>=0.40.0
+openai>=1.50.0
+google-genai>=1.0.0

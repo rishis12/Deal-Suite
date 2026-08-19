@@ -1,0 +1,11 @@
+# Local launchers contain personal keys — never commit
+run_local.ps1
+run_local_api.py
+__pycache__/
+*.pyc
+.sec_cache/
+.env
+test_output/
+node_modules/
+dist/
+*.zip

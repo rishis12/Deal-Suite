@@ -14,12 +14,17 @@ from typing import Optional, Any
 from datetime import datetime
 
 
-# Allow command-line override for testing
+# Allow command-line override for testing — ONLY when this file is run
+# directly. At import time this must never execute: under `uvicorn main:app`
+# sys.argv is uvicorn's own command line, and slurping it here silently set
+# SEC_CONTACT_EMAIL='main:app' and TWELVE_DATA_API_KEY='--host' in every
+# deployment (the true root cause of AIO LBO's "Render env vars fail" issue).
 # Usage: python sec_edgar_test.py [sec_email] [twelve_data_key]
-if len(sys.argv) >= 2 and sys.argv[1]:
-    os.environ["SEC_CONTACT_EMAIL"] = sys.argv[1]
-if len(sys.argv) >= 3 and sys.argv[2]:
-    os.environ["TWELVE_DATA_API_KEY"] = sys.argv[2]
+if __name__ == "__main__":
+    if len(sys.argv) >= 2 and sys.argv[1]:
+        os.environ["SEC_CONTACT_EMAIL"] = sys.argv[1]
+    if len(sys.argv) >= 3 and sys.argv[2]:
+        os.environ["TWELVE_DATA_API_KEY"] = sys.argv[2]
 
 
 # ============================================================================

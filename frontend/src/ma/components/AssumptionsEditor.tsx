@@ -22,7 +22,7 @@ export function AssumptionsEditor({
   return (
     <section className="tile assumptions-tile">
       <div className="tile-head">
-        <h2>Deal Assumptions</h2>
+        <h2>Deal assumptions</h2>
         <span className="muted-note">Blue = your inputs. % Stock is always derived.</span>
       </div>
       <div className="assumptions-grid">

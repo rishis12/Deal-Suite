@@ -58,7 +58,7 @@ export function ResultsPanel({ results, onDownload }: Props) {
       <div className="tile-head">
         <h2>Results</h2>
         <button type="button" className="primary-btn" onClick={onDownload}>
-          ⬇ Download Excel model
+          Download .xlsx
         </button>
       </div>
 
@@ -86,12 +86,46 @@ export function ResultsPanel({ results, onDownload }: Props) {
         </div>
       </div>
 
-      <h3 className="subhead">Accretion / (Dilution) by year</h3>
+      <h3 className="subhead">Accretion / (dilution) by year</h3>
       <AdTrajectory values={ad} />
+
+      <h3 className="subhead">Pro forma EPS bridge</h3>
+      <div style={{ overflowX: 'auto' }}>
+        <table className="deck-table">
+          <thead>
+            <tr>
+              <th>Line item</th>
+              {ad.map((_, i) => (
+                <th key={i} className="num">
+                  Y{i + 1}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pro forma diluted EPS</td>
+              {results.proFormaEpsByYear.map((v, i) => (
+                <td key={i} className="num">
+                  {v === null ? '—' : `$${v.toFixed(2)}`}
+                </td>
+              ))}
+            </tr>
+            <tr className="row-em">
+              <td>EPS — accretion / (dilution)</td>
+              {ad.map((v, i) => (
+                <td key={i} className={`num ${(v ?? 0) >= 0 ? 'pos-num' : 'neg-num'}`}>
+                  {v === null ? '—' : fmtPct(v)}
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div className="results-columns">
         <div>
-          <h3 className="subhead">Sources &amp; Uses</h3>
+          <h3 className="subhead">Sources &amp; uses</h3>
           <dl className="kv-list">
             <div>
               <dt>Purchase equity value</dt>
@@ -132,7 +166,7 @@ export function ResultsPanel({ results, onDownload }: Props) {
         </div>
 
         <div>
-          <h3 className="subhead">Purchase Price Allocation</h3>
+          <h3 className="subhead">Purchase price allocation</h3>
           <dl className="kv-list">
             <div>
               <dt>Target book equity</dt>

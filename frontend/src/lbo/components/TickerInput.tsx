@@ -13,6 +13,10 @@ interface Props {
   error: AnalyzeFailure | null
   serverStatus: BackendWakeStatus
   serverReadyFlash: boolean
+  /** hero = large field inside the empty-state intro; bar = command row */
+  variant?: 'hero' | 'bar'
+  companyName?: string
+  companyMeta?: string
 }
 
 export function TickerInput({
@@ -23,59 +27,51 @@ export function TickerInput({
   error,
   serverStatus,
   serverReadyFlash,
+  variant = 'bar',
+  companyName,
+  companyMeta,
 }: Props) {
   // While a cold backend is still booting, an in-flight Analyze is stuck on
   // that same cold start — label the wait honestly instead of "Analyzing…".
-  // 'unreachable' means the ping already failed outright, so the wait isn't a
-  // cold start; let the normal copy and error handling cover that case.
   const wakingDuringAnalyze = loading && (serverStatus === 'unknown' || serverStatus === 'waking')
-  return (
-    <section className={`tile tile-ticker ${styles.hero}`}>
-      <h2 className="tile-title">Ticker Input</h2>
-      <form
-        className={styles.row}
-        onSubmit={(e) => {
-          e.preventDefault()
-          if (value.trim()) onAnalyze()
-        }}
-      >
-        <input
-          className={`input ${styles.input}`}
-          type="text"
-          value={value}
-          onChange={(e) => onChange(e.target.value.toUpperCase())}
-          placeholder="Enter ticker (e.g., AAPL)"
-          aria-label="Ticker symbol"
-          autoComplete="off"
-          spellCheck={false}
-          disabled={loading}
-        />
-        <button className="btn btn-primary" type="submit" disabled={loading || !value.trim()}>
-          {loading ? (wakingDuringAnalyze ? 'Waking server…' : 'Analyzing…') : 'Analyze'}
-        </button>
-      </form>
 
+  const form = (
+    <form
+      className={variant === 'hero' ? styles.heroRow : styles.barForm}
+      onSubmit={(e) => {
+        e.preventDefault()
+        if (value.trim()) onAnalyze()
+      }}
+    >
+      <input
+        className={variant === 'hero' ? styles.heroInput : styles.barInput}
+        type="text"
+        value={value}
+        onChange={(e) => onChange(e.target.value.toUpperCase())}
+        placeholder={variant === 'hero' ? 'Ticker' : 'TICKER'}
+        aria-label="Ticker symbol"
+        autoComplete="off"
+        spellCheck={false}
+        disabled={loading}
+      />
+      <button className="btn btn-primary" type="submit" disabled={loading || !value.trim()}>
+        {loading ? (wakingDuringAnalyze ? 'Waking server…' : 'Analyzing…') : 'Analyze'}
+      </button>
+    </form>
+  )
+
+  const statusNotes = (
+    <>
       {(serverStatus === 'waking' || wakingDuringAnalyze) && (
-        <p className={`${styles.serverStatus} ${styles.serverWaking}`} role="status">
-          <span className={styles.spinner} aria-hidden="true" />
+        <p className={styles.waking} role="status">
           {WAKING_MESSAGE}
         </p>
       )}
       {serverReadyFlash && !loading && (
-        <p className={`${styles.serverStatus} ${styles.serverReady}`} role="status">
+        <p className={styles.ready} role="status">
           Server is ready.
         </p>
       )}
-
-      <div className={styles.chips}>
-        <span className={`chip ${SOURCE_HEALTH.secEdgar ? 'ok' : 'bad'}`}>
-          SEC EDGAR {SOURCE_HEALTH.secEdgar ? '✓' : '✗'}
-        </span>
-        <span className={`chip ${SOURCE_HEALTH.twelveData ? 'ok' : 'bad'}`}>
-          Twelve Data {SOURCE_HEALTH.twelveData ? '✓' : '✗'}
-        </span>
-      </div>
-
       {error && (
         <div className="error-banner" role="alert">
           <strong>Validation failed — {error.ticker}</strong>
@@ -95,6 +91,37 @@ export function TickerInput({
           </ul>
         </div>
       )}
+    </>
+  )
+
+  if (variant === 'hero') {
+    return (
+      <div className={styles.heroWrap}>
+        {form}
+        {statusNotes}
+      </div>
+    )
+  }
+
+  return (
+    <section className={`tile ${styles.barTile}`}>
+      <div className={styles.barRow}>
+        <div className={styles.barField}>
+          <span className={styles.barLabel}>Ticker</span>
+          {form}
+        </div>
+        {companyName && (
+          <div className={styles.identity}>
+            <div className={styles.coName}>{companyName}</div>
+            {companyMeta && <div className={styles.coMeta}>{companyMeta}</div>}
+          </div>
+        )}
+        <div className={styles.chips}>
+          <span className={`chip ${SOURCE_HEALTH.secEdgar ? 'ok' : 'bad'}`}>SEC EDGAR</span>
+          <span className={`chip ${SOURCE_HEALTH.twelveData ? 'ok' : 'bad'}`}>Twelve Data</span>
+        </div>
+      </div>
+      {statusNotes}
     </section>
   )
 }

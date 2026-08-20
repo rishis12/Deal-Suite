@@ -53,7 +53,7 @@ export function MarketConcentration({ acquirer, target, rows, onRowsChange }: Pr
   return (
     <section className="tile concentration-tile">
       <div className="tile-head">
-        <h2>Market Concentration (optional)</h2>
+        <h2>Market concentration (optional)</h2>
         <span className={sameIndustry ? 'status-pill degraded' : 'status-pill pass'}>
           {sameIndustry ? 'Same industry (same SIC)' : 'Different SIC codes'}
         </span>

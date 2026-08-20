@@ -87,7 +87,7 @@ export function CompanySnapshot({ snapshot, userOverrides, onUpdateOverride }: P
         Company Snapshot
         <span>{collapsed ? '+' : '−'}</span>
       </button>
-      <h2 className="tile-title">Company Snapshot</h2>
+      <h2 className="tile-title">Company snapshot</h2>
       <div className="collapsible-body">
         <div className={styles.head}>
           <div>
@@ -118,7 +118,7 @@ export function CompanySnapshot({ snapshot, userOverrides, onUpdateOverride }: P
             )}
             {showTooltip && hasDegradedIssues && (
               <div className={styles.tooltip}>
-                <div className={styles.tooltipTitle}>Data Quality Issues</div>
+                <div className={styles.tooltipTitle}>Data quality issues</div>
                 <p className={styles.tooltipDesc}>
                   Some data wasn't reported by the company and was estimated using fallbacks.
                   You can manually provide missing values below.
@@ -216,7 +216,7 @@ export function CompanySnapshot({ snapshot, userOverrides, onUpdateOverride }: P
 
         {issues.length > 0 && (
           <div className={styles.flags}>
-            <div className={styles.flagsTitle}>Data Quality Flags</div>
+            <div className={styles.flagsTitle}>Data quality flags</div>
             {issues.map((f, i) => {
               const overrideKey = getOverrideKeyFromFlagText(f.text)
               const isResolved = f.type === 'user_provided'

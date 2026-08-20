@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eae7e0;font-family:'Instrument Sans',system-ui,sans-serif;font-variant-numeric:tabular-nums}
+a{color:#a8792c}a:hover{color:#8a6120}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:600 10px 'Instrument Sans',sans-serif;padding:3px 7px;background:#14161a;color:#fff;border-radius:3px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 'Instrument Sans',sans-serif;color:#14161a}
+.dv-opts{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px 'Instrument Sans',sans-serif;padding:3px 7px;background:rgba(0,0,0,.08);color:#14161a;border-radius:3px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 'Instrument Sans',sans-serif;color:rgba(0,0,0,.55)}
+.dv-card{max-width:100%;background:#f3f1ec;border:1px solid rgba(0,0,0,.1);overflow:hidden}
+.dv-opt:target .dv-oid{background:#a8792c;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.5 'Instrument Sans',sans-serif;color:rgba(0,0,0,.5)}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t1" style="background: {{ canvasBg }}">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Deal Suite — institutional terminal direction. Three shells (<a class="dv-oid" href="#1a">1a</a>–<a class="dv-oid" href="#1c">1c</a>), then the remaining states in the <a class="dv-oid" href="#1a">1a</a> vocabulary.</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel" style="display: {{ badgeDisplay }}"><a class="dv-oid" href="#1a">1a</a>Shell A — persistent left rail, KPI ribbon, full-width tabular decks</div>
+<div class="dv-card" style="width:1280px" data-screen-label="1a LBO filled — rail shell">
+
+<div style="display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 20px;background:#14161a">
+<div style="display:flex;align-items:center;gap:14px">
+<div style="width:9px;height:9px;flex:none;background:#a8792c;transform:rotate(45deg) translateY(0)"></div>
+<span style="font:400 27px/1 'Pinyon Script',cursive;color:#fcfbf9;display:block;transform:translateY(-2px)">Deal Suite</span>
+<span style="font:400 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86">LBO &amp; M&amp;A modeling from SEC filings</span>
+</div>
+<div style="display:flex;border:1px solid #2c3138">
+<div style="padding:6px 16px;background:#fcfbf9;font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">LBO Analyzer</div>
+<div style="padding:6px 16px;font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;white-space:nowrap;flex:none">M&amp;A Modeler</div>
+</div>
+<div style="display:flex;align-items:center;gap:14px">
+<span style="padding:4px 8px;border:1px solid #2c3138;font:500 10px/1 'Instrument Sans',sans-serif;letter-spacing:.02em;color:#c8bfa8">Add API key for AI analysis</span>
+<span style="font:500 11px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Settings</span>
+</div>
+</div>
+
+<div style="display:flex;align-items:stretch">
+
+<div style="width:196px;flex:none;background:#fcfbf9;border-right:1px solid #e3e0d9;padding:20px 0 24px;display:flex;flex-direction:column;gap:22px">
+<div style="display:flex;flex-direction:column;gap:2px">
+<div style="padding:0 16px 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Workspace</div>
+<div style="padding:7px 16px;border-left:2px solid #a8792c;background:#f5edda;font:600 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">Model builder</div>
+<div style="padding:7px 16px;border-left:2px solid transparent;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Comparison<span style="float:right;font:500 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">3</span></div>
+<div style="padding:7px 16px;border-left:2px solid transparent;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Saved runs</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:2px">
+<div style="padding:0 16px 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Model</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Company snapshot</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Assumptions</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Debt schedule</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Sensitivity</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:2px">
+<div style="padding:0 16px 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Output</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Excel workbook</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Narrative report</div>
+</div>
+<div style="margin-top:auto;padding:16px 16px 0;border-top:1px solid #eeece6;display:flex;flex-direction:column;gap:5px">
+<span style="font:400 9.5px/1.4 'Instrument Sans',sans-serif;color:#9ea1a7">API :8002 · OK 41ms</span>
+<span style="font:400 9.5px/1.4 'Instrument Sans',sans-serif;color:#9ea1a7">Filings 10-K FY24 · 10-Q Q3</span>
+</div>
+</div>
+
+<div style="flex:1;min-width:0;padding:20px 24px 26px;display:flex;flex-direction:column;gap:18px">
+
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px">
+<div style="display:flex;align-items:flex-end;gap:18px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Ticker</span>
+<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:#fcfbf9;border:1px solid #14161a;min-width:150px"><span style="font:600 14px/1 'Instrument Sans',sans-serif;letter-spacing:.02em;color:#14161a">TICKER-A</span><span style="margin-left:auto;font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">CIK 0000000000</span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:5px;padding-bottom:2px">
+<span style="font:600 15px/1.2 'Instrument Sans',sans-serif;color:#14161a">Placeholder Industrials, Inc.</span>
+<span style="font:400 11.5px/1 'Instrument Sans',sans-serif;color:#7b7f86">Sector placeholder · Mid-cap · FY end Dec</span>
+</div>
+</div>
+<div style="display:flex;gap:8px">
+<div style="padding:9px 16px;background:#14161a;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#fcfbf9">Generate model</div>
+<div style="padding:9px 16px;background:#fcfbf9;border:1px solid #d6d2c9;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#23272e">Download .xlsx</div>
+<div style="padding:9px 16px;background:#fcfbf9;border:1px solid #d6d2c9;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#23272e">Narrative report</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(5,1fr);background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="padding:16px 18px;border-right:1px solid #eeece6;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Sponsor IRR</span><span style="font:500 27px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">24.8%</span><span style="font:500 10.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a">▲ 310 bps vs base</span></div>
+<div style="padding:16px 18px;border-right:1px solid #eeece6;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">MOIC</span><span style="font:500 27px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">2.42×</span><span style="font:500 10.5px/1 'Instrument Sans',sans-serif;color:#7b7f86">5-year hold</span></div>
+<div style="padding:16px 18px;border-right:1px solid #eeece6;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Entry / exit</span><span style="font:500 27px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">11.5 / 11.0</span><span style="font:500 10.5px/1 'Instrument Sans',sans-serif;color:#a83232">▼ 0.5× multiple compression</span></div>
+<div style="padding:16px 18px;border-right:1px solid #eeece6;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Entry leverage</span><span style="font:500 27px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">5.5×</span><span style="font:500 10.5px/1 'Instrument Sans',sans-serif;color:#7b7f86">Net debt / EBITDA</span></div>
+<div style="padding:16px 18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Feasibility</span><span style="font:500 27px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">78<span style="font-size:14px;color:#9ea1a7">/100</span></span><span style="font:500 10.5px/1 'Instrument Sans',sans-serif;color:#96631a">■ Financeable — tight DSCR</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Company snapshot</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">10-K FY24</span></div>
+<div style="padding:4px 16px 14px">
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Revenue</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">4,820.0</span></div>
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">EBITDA</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">742.0</span></div>
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">EBITDA margin</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">15.4%</span></div>
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Net debt</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">1,310.0</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Capex % rev</span><span style="display:flex;align-items:center;gap:8px"><span style="padding:2px 5px;background:#f7eddb;font:600 9.5px/1.3 'Instrument Sans',sans-serif;color:#96631a">Defaulted</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">3.2%</span></span></div>
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Tax rate</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">24.0%</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Share price</span><span style="display:flex;align-items:center;gap:8px"><span style="padding:2px 5px;background:#e6efe9;font:600 9.5px/1.3 'Instrument Sans',sans-serif;color:#1f6f4a">User</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#1d4ed8">42.50</span></span></div>
+</div>
+</div>
+
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Assumptions</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Editable</span></div>
+<div style="padding:4px 16px 14px">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Entry multiple</span><span style="padding:5px 9px;border:1px solid #d6d2c9;background:#fff;font:500 12px/1 'Instrument Sans',sans-serif;color:#1d4ed8">11.5×</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Exit multiple</span><span style="padding:5px 9px;border:1px solid #d6d2c9;background:#fff;font:500 12px/1 'Instrument Sans',sans-serif;color:#1d4ed8">11.0×</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Debt / EBITDA</span><span style="padding:5px 9px;border:1px solid #d6d2c9;background:#fff;font:500 12px/1 'Instrument Sans',sans-serif;color:#1d4ed8">5.5×</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Blended coupon</span><span style="padding:5px 9px;border:1px solid #d6d2c9;background:#fff;font:500 12px/1 'Instrument Sans',sans-serif;color:#1d4ed8">8.75%</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Revenue CAGR</span><span style="padding:5px 9px;border:1px solid #d6d2c9;background:#fff;font:500 12px/1 'Instrument Sans',sans-serif;color:#1d4ed8">4.0%</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Margin expansion</span><span style="padding:5px 9px;border:1px solid #d6d2c9;background:#fff;font:500 12px/1 'Instrument Sans',sans-serif;color:#1d4ed8">+25 bps/yr</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Hold period</span><span style="padding:5px 9px;border:1px solid #d6d2c9;background:#fff;font:500 12px/1 'Instrument Sans',sans-serif;color:#1d4ed8">5 yrs</span></div>
+</div>
+</div>
+
+<div style="background:#14161a;display:flex;flex-direction:column">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #2c3138"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#fcfbf9">Returns bridge</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">USD mm</span></div>
+<div style="padding:6px 16px 14px">
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #23272e"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#b6bac0">Sponsor equity</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#fcfbf9">3,732.0</span></div>
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #23272e"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#b6bac0">EBITDA growth</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#7ec59f">+1,946.0</span></div>
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #23272e"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#b6bac0">Debt paydown</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#7ec59f">+1,404.0</span></div>
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #23272e"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#b6bac0">Multiple change</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#e79a94">−496.0</span></div>
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #23272e"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#b6bac0">Fees &amp; financing</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#e79a94">−148.0</span></div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;padding:12px 0 0"><span style="font:600 12px/1 'Instrument Sans',sans-serif;color:#fcfbf9;white-space:nowrap">Exit equity value</span><span style="font:500 18px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#d3ab60">9,043.0</span></div>
+</div>
+<div style="margin-top:auto;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #2c3138">
+<div style="padding:12px 16px;border-right:1px solid #2c3138;display:flex;flex-direction:column;gap:5px"><span style="font:600 8.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86">Min DSCR</span><span style="font:500 14px/1 'Instrument Sans',sans-serif;color:#fcfbf9">1.24×</span></div>
+<div style="padding:12px 16px;display:flex;flex-direction:column;gap:5px"><span style="font:600 8.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86">Exit leverage</span><span style="font:500 14px/1 'Instrument Sans',sans-serif;color:#fcfbf9">2.4×</span></div>
+</div>
+</div>
+</div>
+
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Debt schedule — USD mm</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Every cell is a live formula · recalc verified</span></div>
+<table style="width:100%;border-collapse:collapse">
+<thead>
+<tr>
+<th style="text-align:left;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Line item</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y0</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y1</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y2</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y3</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y4</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Revenue</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">4,820</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">5,013</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">5,213</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">5,422</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">5,639</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">5,864</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">EBITDA</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">742</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">784</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">829</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">876</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">925</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">977</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Cash interest</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#7b7f86;border-bottom:1px solid #f2f0ea">—</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#a83232;border-bottom:1px solid #f2f0ea">(357)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#a83232;border-bottom:1px solid #f2f0ea">(331)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#a83232;border-bottom:1px solid #f2f0ea">(300)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#a83232;border-bottom:1px solid #f2f0ea">(264)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#a83232;border-bottom:1px solid #f2f0ea">(223)</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Free cash flow</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#7b7f86;border-bottom:1px solid #f2f0ea">—</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">246</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">281</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">318</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">357</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">399</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Term loan balance</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">4,081</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">3,835</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">3,554</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">3,236</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">2,879</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;border-bottom:1px solid #f2f0ea">2,480</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">Net leverage</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;background:#f8f6f1">5.5×</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;background:#f8f6f1">4.9×</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;background:#f8f6f1">4.3×</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;background:#f8f6f1">3.7×</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;background:#f8f6f1">3.1×</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a;background:#f8f6f1">2.4×</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr 1fr;gap:16px">
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Sensitivity — IRR</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Exit multiple × leverage turns</span></div>
+<div style="padding:16px">
+<div style="display:grid;grid-template-columns:78px repeat(5,1fr);gap:2px">
+<div></div>
+<div style="text-align:center;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;padding-bottom:6px">4.5×</div>
+<div style="text-align:center;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;padding-bottom:6px">5.0×</div>
+<div style="text-align:center;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;padding-bottom:6px">5.5×</div>
+<div style="text-align:center;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;padding-bottom:6px">6.0×</div>
+<div style="text-align:center;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;padding-bottom:6px">6.5×</div>
+
+<div style="display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">10.0×</div>
+<div style="padding:11px 0;text-align:center;background:#f6e8e6;font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232">13.1%</div>
+<div style="padding:11px 0;text-align:center;background:#f6e8e6;font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232">14.8%</div>
+<div style="padding:11px 0;text-align:center;background:#faf1e2;font:500 12px/1 'Instrument Sans',sans-serif;color:#96631a">16.4%</div>
+<div style="padding:11px 0;text-align:center;background:#faf1e2;font:500 12px/1 'Instrument Sans',sans-serif;color:#96631a">18.0%</div>
+<div style="padding:11px 0;text-align:center;background:#f0f5f1;font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">19.6%</div>
+
+<div style="display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">10.5×</div>
+<div style="padding:11px 0;text-align:center;background:#f6e8e6;font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232">15.0%</div>
+<div style="padding:11px 0;text-align:center;background:#faf1e2;font:500 12px/1 'Instrument Sans',sans-serif;color:#96631a">16.8%</div>
+<div style="padding:11px 0;text-align:center;background:#faf1e2;font:500 12px/1 'Instrument Sans',sans-serif;color:#96631a">18.5%</div>
+<div style="padding:11px 0;text-align:center;background:#f0f5f1;font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">20.2%</div>
+<div style="padding:11px 0;text-align:center;background:#e6efe9;font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">21.9%</div>
+
+<div style="display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font:600 10px/1 'Instrument Sans',sans-serif;color:#14161a">11.0×</div>
+<div style="padding:11px 0;text-align:center;background:#faf1e2;font:500 12px/1 'Instrument Sans',sans-serif;color:#96631a">17.0%</div>
+<div style="padding:11px 0;text-align:center;background:#faf1e2;font:500 12px/1 'Instrument Sans',sans-serif;color:#96631a">18.9%</div>
+<div style="padding:11px 0;text-align:center;background:#14161a;font:600 12px/1 'Instrument Sans',sans-serif;color:#d3ab60;outline:2px solid #a8792c">24.8%</div>
+<div style="padding:11px 0;text-align:center;background:#e6efe9;font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">22.5%</div>
+<div style="padding:11px 0;text-align:center;background:#dbeae1;font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">24.3%</div>
+
+<div style="display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">11.5×</div>
+<div style="padding:11px 0;text-align:center;background:#faf1e2;font:500 12px/1 'Instrument Sans',sans-serif;color:#96631a">18.9%</div>
+<div style="padding:11px 0;text-align:center;background:#f0f5f1;font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">20.9%</div>
+<div style="padding:11px 0;text-align:center;background:#e6efe9;font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">22.8%</div>
+<div style="padding:11px 0;text-align:center;background:#dbeae1;font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">24.7%</div>
+<div style="padding:11px 0;text-align:center;background:#cfe3d7;font:500 12px/1 'Instrument Sans',sans-serif;color:#1a5c3d">26.5%</div>
+
+<div style="display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">12.0×</div>
+<div style="padding:11px 0;text-align:center;background:#f0f5f1;font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">20.7%</div>
+<div style="padding:11px 0;text-align:center;background:#e6efe9;font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">22.8%</div>
+<div style="padding:11px 0;text-align:center;background:#dbeae1;font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">24.9%</div>
+<div style="padding:11px 0;text-align:center;background:#cfe3d7;font:500 12px/1 'Instrument Sans',sans-serif;color:#1a5c3d">26.9%</div>
+<div style="padding:11px 0;text-align:center;background:#c2dccd;font:500 12px/1 'Instrument Sans',sans-serif;color:#1a5c3d">28.8%</div>
+</div>
+<div style="display:flex;align-items:center;gap:16px;margin-top:14px;padding-top:12px;border-top:1px solid #f2f0ea">
+<span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Base case outlined</span>
+<span style="display:flex;align-items:center;gap:6px;font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7"><span style="width:10px;height:10px;background:#f6e8e6"></span>&lt;15%</span>
+<span style="display:flex;align-items:center;gap:6px;font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7"><span style="width:10px;height:10px;background:#faf1e2"></span>15–20%</span>
+<span style="display:flex;align-items:center;gap:6px;font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7"><span style="width:10px;height:10px;background:#c2dccd"></span>&gt;20%</span>
+</div>
+</div>
+</div>
+
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Feasibility checks</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">78 / 100</span></div>
+<div style="padding:6px 16px 14px">
+<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f2f0ea"><span style="width:6px;height:6px;border-radius:50%;background:#1f6f4a"></span><span style="font:400 12px/1.3 'Instrument Sans',sans-serif;color:#23272e">Leverage within 6.0× market ceiling</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f2f0ea"><span style="width:6px;height:6px;border-radius:50%;background:#1f6f4a"></span><span style="font:400 12px/1.3 'Instrument Sans',sans-serif;color:#23272e">FCF positive in every projected year</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f2f0ea"><span style="width:6px;height:6px;border-radius:50%;background:#96631a"></span><span style="font:400 12px/1.3 'Instrument Sans',sans-serif;color:#23272e">Min DSCR 1.24× — below 1.35× covenant comfort</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f2f0ea"><span style="width:6px;height:6px;border-radius:50%;background:#1f6f4a"></span><span style="font:400 12px/1.3 'Instrument Sans',sans-serif;color:#23272e">Exit leverage 2.4× supports refinancing</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px 0"><span style="width:6px;height:6px;border-radius:50%;background:#96631a"></span><span style="font:400 12px/1.3 'Instrument Sans',sans-serif;color:#23272e">Capex defaulted — no segment disclosure in filing</span></div>
+</div>
+<div style="padding:12px 16px;border-top:1px solid #eeece6;background:#f8f6f1"><span style="font:400 10px/1.5 'Instrument Sans',sans-serif;color:#7b7f86">Workbook recalculated via LibreOffice — 0 hardcoded outputs, 1,284 formulas verified.</span></div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel" style="display: {{ badgeDisplay }}"><a class="dv-oid" href="#1b">1b</a>Shell B — no rail; ink masthead with tab strip, results-first two-column body</div>
+<div class="dv-card" style="width:1280px" data-screen-label="1b LBO filled — masthead shell">
+
+<div style="background:#14161a;padding:18px 28px 0">
+<div style="display:flex;align-items:flex-start;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;gap:12px"><div style="width:9px;height:9px;flex:none;background:#a8792c;transform:rotate(45deg) translateY(0)"></div><span style="font:400 32px/1 'Pinyon Script',cursive;color:#fcfbf9;display:block;transform:translateY(-3px)">Deal Suite</span></div>
+<span style="font:400 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86">Leveraged buyout analyzer · SEC EDGAR primary source</span>
+</div>
+<div style="display:flex;align-items:center;gap:20px">
+<div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end"><span style="font:600 8.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86">Subject</span><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#fcfbf9">TICKER-A · Placeholder Industrials</span></div>
+<div style="width:1px;height:32px;background:#2c3138"></div>
+<div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end"><span style="font:600 8.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86">Session</span><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#d3ab60">API key added</span></div>
+</div>
+</div>
+<div style="display:flex;gap:26px;margin-top:20px">
+<div style="padding:0 0 11px;border-bottom:2px solid #a8792c;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;letter-spacing:.045em;color:#fcfbf9">Model</div>
+<div style="padding:0 0 11px;border-bottom:2px solid transparent;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;letter-spacing:.045em;color:#7b7f86">Sensitivity</div>
+<div style="padding:0 0 11px;border-bottom:2px solid transparent;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;letter-spacing:.045em;color:#7b7f86">Comparison&nbsp;<span style="color:#a8792c">3</span></div>
+<div style="padding:0 0 11px;border-bottom:2px solid transparent;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;letter-spacing:.045em;color:#7b7f86">Export</div>
+<div style="margin-left:auto;padding:0 0 11px;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;letter-spacing:.045em;color:#7b7f86">M&amp;A Modeler →</div>
+</div>
+</div>
+
+<div style="display:flex;align-items:stretch;background:#fcfbf9;border-bottom:1px solid #e3e0d9">
+<div style="flex:1;padding:22px 28px;border-right:1px solid #eeece6"><div style="display:flex;flex-direction:column;gap:9px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Sponsor IRR</span><span style="font:500 34px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">24.8%</span><span style="font:500 10px/1 'Instrument Sans',sans-serif;color:#1f6f4a">▲ 310 bps vs base</span></div></div>
+<div style="flex:1;padding:22px 28px;border-right:1px solid #eeece6"><div style="display:flex;flex-direction:column;gap:9px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">MOIC</span><span style="font:500 34px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">2.42×</span><span style="font:500 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">5-year hold</span></div></div>
+<div style="flex:1;padding:22px 28px;border-right:1px solid #eeece6"><div style="display:flex;flex-direction:column;gap:9px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Exit equity</span><span style="font:500 34px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">9,043</span><span style="font:500 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">USD mm</span></div></div>
+<div style="flex:1;padding:22px 28px;border-right:1px solid #eeece6"><div style="display:flex;flex-direction:column;gap:9px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Min DSCR</span><span style="font:500 34px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">1.24×</span><span style="font:500 10px/1 'Instrument Sans',sans-serif;color:#96631a">■ Tight</span></div></div>
+<div style="flex:1;padding:22px 28px"><div style="display:flex;flex-direction:column;gap:9px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Feasibility</span><span style="font:500 34px/1 'Instrument Sans',sans-serif;font-variant-numeric:tabular-nums;color:#14161a">78</span><span style="font:500 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">Financeable</span></div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 340px;gap:20px;padding:20px 28px 28px">
+
+<div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Sources &amp; uses — USD mm</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Balanced</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr">
+<div style="padding:6px 18px 16px;border-right:1px solid #eeece6">
+<div style="padding:10px 0 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Sources</div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Term loan B</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">2,968</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Senior notes</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">1,113</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Sponsor equity</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">3,732</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Cash on B/S</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">180</span></div>
+<div style="display:flex;justify-content:space-between;padding:10px 0 0"><span style="font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a">Total sources</span><span style="font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a">7,993</span></div>
+</div>
+<div style="padding:6px 18px 16px">
+<div style="padding:10px 0 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Uses</div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Equity purchase price</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">6,223</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Refinanced debt</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">1,490</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Financing fees</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">122</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Advisory &amp; other</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">158</span></div>
+<div style="display:flex;justify-content:space-between;padding:10px 0 0"><span style="font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a">Total uses</span><span style="font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a">7,993</span></div>
+</div>
+</div>
+</div>
+
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Projection &amp; debt paydown</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">USD mm · Y0–Y5</span></div>
+<table style="width:100%;border-collapse:collapse">
+<thead><tr>
+<th style="text-align:left;padding:9px 18px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Line</th>
+<th style="text-align:right;padding:9px 14px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y0</th>
+<th style="text-align:right;padding:9px 14px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y1</th>
+<th style="text-align:right;padding:9px 14px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y2</th>
+<th style="text-align:right;padding:9px 14px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y3</th>
+<th style="text-align:right;padding:9px 14px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y4</th>
+<th style="text-align:right;padding:9px 18px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y5</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="padding:9px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">EBITDA</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">742</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">784</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">829</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">876</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">925</td>
+<td style="text-align:right;padding:9px 18px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">977</td>
+</tr>
+<tr>
+<td style="padding:9px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Free cash flow</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#7b7f86;border-bottom:1px solid #f2f0ea">—</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">246</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">281</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">318</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">357</td>
+<td style="text-align:right;padding:9px 18px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">399</td>
+</tr>
+<tr>
+<td style="padding:9px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Total debt</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">4,081</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">3,835</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">3,554</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">3,236</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">2,879</td>
+<td style="text-align:right;padding:9px 18px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">2,480</td>
+</tr>
+<tr>
+<td style="padding:9px 18px;font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">Net leverage</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">5.5×</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">4.9×</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">4.3×</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">3.7×</td>
+<td style="text-align:right;padding:9px 14px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">3.1×</td>
+<td style="text-align:right;padding:9px 18px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">2.4×</td>
+</tr>
+</tbody>
+</table>
+<div style="display:flex;align-items:flex-end;gap:6px;height:74px;padding:16px 18px;border-top:1px solid #eeece6">
+<div style="flex:1;height:100%;background:#dfd9c8"></div>
+<div style="flex:1;height:88%;background:#dfd9c8"></div>
+<div style="flex:1;height:79%;background:#dfd9c8"></div>
+<div style="flex:1;height:69%;background:#c9b98c"></div>
+<div style="flex:1;height:58%;background:#c9b98c"></div>
+<div style="flex:1;height:44%;background:#a8792c"></div>
+<span style="align-self:center;padding-left:14px;font:400 10.5px/1.5 'Instrument Sans',sans-serif;color:#9ea1a7;white-space:nowrap">Debt balance<br>Y0 → Y5</span>
+</div>
+</div>
+
+</div>
+
+<div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+<div style="background:#14161a">
+<div style="padding:12px 16px;border-bottom:1px solid #2c3138"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#fcfbf9">Assumptions</span></div>
+<div style="padding:4px 16px 14px">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #23272e"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#b6bac0">Entry multiple</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#d3ab60">11.5×</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #23272e"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#b6bac0">Exit multiple</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#d3ab60">11.0×</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #23272e"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#b6bac0">Debt / EBITDA</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#d3ab60">5.5×</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #23272e"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#b6bac0">Coupon</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#d3ab60">8.75%</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #23272e"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#b6bac0">Revenue CAGR</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#d3ab60">4.0%</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#b6bac0">Hold period</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#d3ab60">5 yrs</span></div>
+<div style="margin-top:14px;padding:10px 0;text-align:center;background:#a8792c;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#14161a">Re-run model</div>
+</div>
+</div>
+
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Sensitivity — IRR</span></div>
+<div style="padding:14px 16px">
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:2px">
+<div style="padding:9px 0;text-align:center;background:#f6e8e6;font:500 11px/1 'Instrument Sans',sans-serif;color:#a83232">13.1</div>
+<div style="padding:9px 0;text-align:center;background:#f6e8e6;font:500 11px/1 'Instrument Sans',sans-serif;color:#a83232">14.8</div>
+<div style="padding:9px 0;text-align:center;background:#faf1e2;font:500 11px/1 'Instrument Sans',sans-serif;color:#96631a">16.4</div>
+<div style="padding:9px 0;text-align:center;background:#faf1e2;font:500 11px/1 'Instrument Sans',sans-serif;color:#96631a">18.0</div>
+<div style="padding:9px 0;text-align:center;background:#f0f5f1;font:500 11px/1 'Instrument Sans',sans-serif;color:#1f6f4a">19.6</div>
+<div style="padding:9px 0;text-align:center;background:#f6e8e6;font:500 11px/1 'Instrument Sans',sans-serif;color:#a83232">15.0</div>
+<div style="padding:9px 0;text-align:center;background:#faf1e2;font:500 11px/1 'Instrument Sans',sans-serif;color:#96631a">16.8</div>
+<div style="padding:9px 0;text-align:center;background:#faf1e2;font:500 11px/1 'Instrument Sans',sans-serif;color:#96631a">18.5</div>
+<div style="padding:9px 0;text-align:center;background:#f0f5f1;font:500 11px/1 'Instrument Sans',sans-serif;color:#1f6f4a">20.2</div>
+<div style="padding:9px 0;text-align:center;background:#e6efe9;font:500 11px/1 'Instrument Sans',sans-serif;color:#1f6f4a">21.9</div>
+<div style="padding:9px 0;text-align:center;background:#faf1e2;font:500 11px/1 'Instrument Sans',sans-serif;color:#96631a">17.0</div>
+<div style="padding:9px 0;text-align:center;background:#faf1e2;font:500 11px/1 'Instrument Sans',sans-serif;color:#96631a">18.9</div>
+<div style="padding:9px 0;text-align:center;background:#14161a;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#d3ab60">24.8</div>
+<div style="padding:9px 0;text-align:center;background:#e6efe9;font:500 11px/1 'Instrument Sans',sans-serif;color:#1f6f4a">22.5</div>
+<div style="padding:9px 0;text-align:center;background:#dbeae1;font:500 11px/1 'Instrument Sans',sans-serif;color:#1f6f4a">24.3</div>
+<div style="padding:9px 0;text-align:center;background:#faf1e2;font:500 11px/1 'Instrument Sans',sans-serif;color:#96631a">18.9</div>
+<div style="padding:9px 0;text-align:center;background:#f0f5f1;font:500 11px/1 'Instrument Sans',sans-serif;color:#1f6f4a">20.9</div>
+<div style="padding:9px 0;text-align:center;background:#e6efe9;font:500 11px/1 'Instrument Sans',sans-serif;color:#1f6f4a">22.8</div>
+<div style="padding:9px 0;text-align:center;background:#dbeae1;font:500 11px/1 'Instrument Sans',sans-serif;color:#1f6f4a">24.7</div>
+<div style="padding:9px 0;text-align:center;background:#cfe3d7;font:500 11px/1 'Instrument Sans',sans-serif;color:#1a5c3d">26.5</div>
+<div style="padding:9px 0;text-align:center;background:#f0f5f1;font:500 11px/1 'Instrument Sans',sans-serif;color:#1f6f4a">20.7</div>
+<div style="padding:9px 0;text-align:center;background:#e6efe9;font:500 11px/1 'Instrument Sans',sans-serif;color:#1f6f4a">22.8</div>
+<div style="padding:9px 0;text-align:center;background:#dbeae1;font:500 11px/1 'Instrument Sans',sans-serif;color:#1f6f4a">24.9</div>
+<div style="padding:9px 0;text-align:center;background:#cfe3d7;font:500 11px/1 'Instrument Sans',sans-serif;color:#1a5c3d">26.9</div>
+<div style="padding:9px 0;text-align:center;background:#c2dccd;font:500 11px/1 'Instrument Sans',sans-serif;color:#1a5c3d">28.8</div>
+</div>
+<div style="margin-top:12px;font:400 10.5px/1.5 'Instrument Sans',sans-serif;color:#9ea1a7">Exit multiple 10.0–12.0× (rows) × leverage 4.5–6.5× (cols)</div>
+</div>
+</div>
+
+<div style="background:#fcfbf9;border:1px solid #e3e0d9;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Provenance</span>
+<div style="display:flex;flex-wrap:wrap;gap:6px">
+<span style="padding:3px 6px;background:#e6efe9;font:600 9.5px/1.3 'Instrument Sans',sans-serif;color:#1f6f4a">Filed 14</span>
+<span style="padding:3px 6px;background:#f7eddb;font:600 9.5px/1.3 'Instrument Sans',sans-serif;color:#96631a">Defaulted 3</span>
+<span style="padding:3px 6px;background:#f6e8e6;font:600 9.5px/1.3 'Instrument Sans',sans-serif;color:#a83232">Missing 0</span>
+</div>
+<span style="font:400 10px/1.5 'Instrument Sans',sans-serif;color:#7b7f86">1,284 Formulas · 0 hardcoded outputs</span>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel" style="display: {{ badgeDisplay }}"><a class="dv-oid" href="#1c">1c</a>Shell C — workbench: pinned input column left, results canvas right</div>
+<div class="dv-card" style="width:1280px" data-screen-label="1c LBO filled — workbench shell">
+
+<div style="display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 22px;background:#fcfbf9;border-bottom:1px solid #d6d2c9">
+<div style="display:flex;align-items:center;gap:12px"><div style="width:9px;height:9px;flex:none;background:#a8792c;transform:rotate(45deg) translateY(0)"></div><span style="font:400 26px/1 'Pinyon Script',cursive;color:#14161a;display:block;transform:translateY(-2px)">Deal Suite</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;letter-spacing:.02em;color:#9ea1a7">/ LBO</span></div>
+<div style="display:flex;align-items:center;gap:6px">
+<span style="padding:5px 12px;background:#14161a;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#fcfbf9;white-space:nowrap">LBO</span>
+<span style="padding:5px 12px;border:1px solid #d6d2c9;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86;white-space:nowrap">M&amp;A</span>
+</div>
+<div style="display:flex;align-items:center;gap:16px"><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">TICKER-A · FY24</span><span style="font:500 11px/1 'Instrument Sans',sans-serif;color:#23272e">Settings</span></div>
+</div>
+
+<div style="display:flex;align-items:stretch">
+
+<div style="width:312px;flex:none;background:#fcfbf9;border-right:1px solid #d6d2c9;display:flex;flex-direction:column">
+<div style="padding:18px 20px;border-bottom:1px solid #eeece6;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Subject company</span>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:1px solid #14161a;background:#fff"><span style="font:600 13px/1 'Instrument Sans',sans-serif;letter-spacing:.02em;color:#14161a">TICKER-A</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">CIK 0000000000</span></div>
+<span style="font:400 11.5px/1.4 'Instrument Sans',sans-serif;color:#5c6067">Placeholder Industrials, Inc.<br><span style="color:#9ea1a7">Sector placeholder · Mid-cap</span></span>
+</div>
+
+<div style="padding:18px 20px;border-bottom:1px solid #eeece6;display:flex;flex-direction:column;gap:12px">
+<span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Filed fundamentals</span>
+<div style="display:flex;justify-content:space-between"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Revenue</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">4,820.0</span></div>
+<div style="display:flex;justify-content:space-between"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">EBITDA</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">742.0</span></div>
+<div style="display:flex;justify-content:space-between"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Net debt</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">1,310.0</span></div>
+<div style="display:flex;justify-content:space-between"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Shares out.</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">146.4</span></div>
+</div>
+
+<div style="padding:18px 20px;display:flex;flex-direction:column;gap:14px">
+<span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Assumptions</span>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:400 11px/1 'Instrument Sans',sans-serif;color:#7b7f86">Entry multiple</span><div style="display:flex;align-items:center;justify-content:space-between;padding:8px 11px;border:1px solid #d6d2c9;background:#fff"><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#1d4ed8">11.5×</span><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Comp median 11.2×</span></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:400 11px/1 'Instrument Sans',sans-serif;color:#7b7f86">Exit multiple</span><div style="display:flex;align-items:center;justify-content:space-between;padding:8px 11px;border:1px solid #d6d2c9;background:#fff"><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#1d4ed8">11.0×</span><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7">−0.5× vs entry</span></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:400 11px/1 'Instrument Sans',sans-serif;color:#7b7f86">Debt / EBITDA</span><div style="display:flex;align-items:center;justify-content:space-between;padding:8px 11px;border:1px solid #d6d2c9;background:#fff"><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#1d4ed8">5.5×</span><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#96631a">Ceiling 6.0×</span></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:400 11px/1 'Instrument Sans',sans-serif;color:#7b7f86">Blended coupon</span><div style="display:flex;align-items:center;justify-content:space-between;padding:8px 11px;border:1px solid #d6d2c9;background:#fff"><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#1d4ed8">8.75%</span><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7">SOFR + 425</span></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:400 11px/1 'Instrument Sans',sans-serif;color:#7b7f86">Hold period</span><div style="display:flex;align-items:center;justify-content:space-between;padding:8px 11px;border:1px solid #d6d2c9;background:#fff"><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#1d4ed8">5 yrs</span><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Y0 → Y5</span></div></div>
+<div style="margin-top:6px;padding:11px 0;text-align:center;background:#14161a;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#fcfbf9">Re-run model</div>
+<span style="font:400 10.5px/1.5 'Instrument Sans',sans-serif;color:#9ea1a7">Last run 14:22:06 · 1,284 formulas</span>
+</div>
+</div>
+
+<div style="flex:1;min-width:0;background:#f3f1ec">
+<div style="display:flex;align-items:center;gap:8px;padding:12px 24px;border-bottom:1px solid #e3e0d9;background:#f8f6f1">
+<span style="padding:5px 11px;background:#fcfbf9;border:1px solid #14161a;font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Returns</span>
+<span style="padding:5px 11px;font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86;white-space:nowrap">Debt schedule</span>
+<span style="padding:5px 11px;font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86;white-space:nowrap">Sensitivity</span>
+<span style="padding:5px 11px;font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86;white-space:nowrap">Checks</span>
+<span style="margin-left:auto;font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7">USD mm unless noted</span>
+</div>
+
+<div style="padding:20px 24px 26px;display:flex;flex-direction:column;gap:18px">
+
+<div style="display:flex;background:#14161a">
+<div style="flex:1;padding:20px 22px;border-right:1px solid #2c3138;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86;white-space:nowrap">Sponsor IRR</span><span style="font:500 30px/1 'Instrument Sans',sans-serif;color:#fcfbf9">24.8%</span><span style="font:500 10px/1 'Instrument Sans',sans-serif;color:#7ec59f">▲ 310 bps</span></div>
+<div style="flex:1;padding:20px 22px;border-right:1px solid #2c3138;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86;white-space:nowrap">MOIC</span><span style="font:500 30px/1 'Instrument Sans',sans-serif;color:#fcfbf9">2.42×</span><span style="font:500 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">5-yr hold</span></div>
+<div style="flex:1;padding:20px 22px;border-right:1px solid #2c3138;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86;white-space:nowrap">Exit equity</span><span style="font:500 30px/1 'Instrument Sans',sans-serif;color:#d3ab60">9,043</span><span style="font:500 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">Y5</span></div>
+<div style="flex:1;padding:20px 22px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86;white-space:nowrap">Feasibility</span><span style="font:500 30px/1 'Instrument Sans',sans-serif;color:#fcfbf9">78</span><span style="font:500 10px/1 'Instrument Sans',sans-serif;color:#d3ab60">■ Tight DSCR</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Value creation</span></div>
+<div style="padding:6px 16px 16px">
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">EBITDA growth</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">+1,946</span></div>
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Debt paydown</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a">+1,404</span></div>
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Multiple change</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232">−496</span></div>
+<div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Fees &amp; financing</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232">−148</span></div>
+<div style="display:flex;justify-content:space-between;padding:11px 0 0"><span style="font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a">Equity value at exit</span><span style="font:600 13px/1 'Instrument Sans',sans-serif;color:#14161a">9,043</span></div>
+<div style="display:flex;align-items:stretch;height:12px;margin-top:14px"><div style="width:41%;background:#a8792c"></div><div style="width:30%;background:#c9b98c"></div><div style="width:22%;background:#dfd9c8"></div><div style="width:7%;background:#e3e0d9"></div></div>
+</div>
+</div>
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Feasibility checks</span></div>
+<div style="padding:6px 16px 16px">
+<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="width:6px;height:6px;border-radius:50%;background:#1f6f4a"></span><span style="font:400 12px/1.3 'Instrument Sans',sans-serif;color:#23272e">Leverage within 6.0× ceiling</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="width:6px;height:6px;border-radius:50%;background:#1f6f4a"></span><span style="font:400 12px/1.3 'Instrument Sans',sans-serif;color:#23272e">FCF positive in all projected years</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="width:6px;height:6px;border-radius:50%;background:#96631a"></span><span style="font:400 12px/1.3 'Instrument Sans',sans-serif;color:#23272e">Min DSCR 1.24× vs 1.35× comfort</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #f2f0ea"><span style="width:6px;height:6px;border-radius:50%;background:#1f6f4a"></span><span style="font:400 12px/1.3 'Instrument Sans',sans-serif;color:#23272e">Exit leverage 2.4× supports refi</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:9px 0"><span style="width:6px;height:6px;border-radius:50%;background:#96631a"></span><span style="font:400 12px/1.3 'Instrument Sans',sans-serif;color:#23272e">Capex defaulted — no segment disclosure</span></div>
+</div>
+</div>
+</div>
+
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Debt schedule</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Recalc verified</span></div>
+<table style="width:100%;border-collapse:collapse">
+<thead><tr>
+<th style="text-align:left;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Line</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y1</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y2</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y3</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y4</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y5</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Cash interest</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232;border-bottom:1px solid #f2f0ea">(357)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232;border-bottom:1px solid #f2f0ea">(331)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232;border-bottom:1px solid #f2f0ea">(300)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232;border-bottom:1px solid #f2f0ea">(264)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232;border-bottom:1px solid #f2f0ea">(223)</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Free cash flow</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">246</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">281</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">318</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">357</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">399</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Term loan balance</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">3,835</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">3,554</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">3,236</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">2,879</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">2,480</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">DSCR</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#96631a;background:#f8f6f1">1.24×</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">1.38×</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">1.55×</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">1.76×</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">2.02×</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1d">
+<div class="dv-olabel" style="display: {{ badgeDisplay }}"><a class="dv-oid" href="#1d">1d</a>LBO — first run, empty state</div>
+<div class="dv-card" style="width:1280px" data-screen-label="1d LBO empty state">
+<div style="display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 20px;background:#14161a">
+<div style="display:flex;align-items:center;gap:14px"><div style="width:9px;height:9px;flex:none;background:#a8792c;transform:rotate(45deg) translateY(0)"></div><span style="font:400 27px/1 'Pinyon Script',cursive;color:#fcfbf9;display:block;transform:translateY(-2px)">Deal Suite</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86">LBO &amp; M&amp;A modeling from SEC filings</span></div>
+<div style="display:flex;border:1px solid #2c3138"><div style="padding:6px 16px;background:#fcfbf9;font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">LBO Analyzer</div><div style="padding:6px 16px;font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;white-space:nowrap;flex:none">M&amp;A Modeler</div></div>
+<div style="display:flex;align-items:center;gap:14px"><span style="padding:4px 8px;border:1px solid #2c3138;font:500 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">Add API key for AI analysis</span><span style="font:500 11px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Settings</span></div>
+</div>
+<div style="display:flex;align-items:stretch">
+<div style="width:196px;flex:none;background:#fcfbf9;border-right:1px solid #e3e0d9;padding:20px 0;display:flex;flex-direction:column;gap:2px">
+<div style="padding:0 16px 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Workspace</div>
+<div style="padding:7px 16px;border-left:2px solid #a8792c;background:#f5edda;font:600 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">Model builder</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#b6bac0">Comparison</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#b6bac0">Saved runs</div>
+<div style="margin-top:16px;padding:0 16px 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Model</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#c9ccd1">Company snapshot</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#c9ccd1">Assumptions</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#c9ccd1">Debt schedule</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#c9ccd1">Sensitivity</div>
+</div>
+<div style="flex:1;min-width:0;padding:34px 44px 40px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:14px;max-width:620px">
+<span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#a8792c">Step 01 — subject company</span>
+<span style="font:600 27px/1.15 'Instrument Sans',sans-serif;letter-spacing:-.01em;color:#14161a;text-wrap:pretty">Enter a ticker. The model is built from the company's own filings, not from estimates.</span>
+<span style="font:400 13.5px/1.6 'Instrument Sans',sans-serif;color:#5c6067;text-wrap:pretty">Deal Suite pulls the latest 10-K and 10-Q from SEC EDGAR, derives the fundamentals it needs, and flags every figure it had to default or substitute.</span>
+</div>
+<div style="display:flex;align-items:stretch;gap:10px;max-width:620px">
+<div style="flex:1;display:flex;align-items:center;padding:13px 15px;background:#fcfbf9;border:1px solid #d6d2c9"><span style="font:400 14px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#b6bac0">Ticker</span><span style="width:1px;height:16px;margin-left:2px;background:#14161a"></span></div>
+<div style="padding:13px 26px;background:#14161a;font:600 12px/1 'Instrument Sans',sans-serif;color:#fcfbf9;white-space:nowrap;display:flex;align-items:center">Analyze</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid #e3e0d9;background:#fcfbf9">
+<div style="padding:20px 22px;border-right:1px solid #eeece6;display:flex;flex-direction:column;gap:9px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#a8792c">01 Pull</span><span style="font:600 13.5px/1.3 'Instrument Sans',sans-serif;color:#14161a">Filings, not guesses</span><span style="font:400 12px/1.55 'Instrument Sans',sans-serif;color:#5c6067">Revenue, EBITDA, debt, share count and capex read straight from EDGAR XBRL.</span></div>
+<div style="padding:20px 22px;border-right:1px solid #eeece6;display:flex;flex-direction:column;gap:9px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#a8792c">02 Model</span><span style="font:600 13.5px/1.3 'Instrument Sans',sans-serif;color:#14161a">Assumptions you own</span><span style="font:400 12px/1.55 'Instrument Sans',sans-serif;color:#5c6067">Entry and exit multiples, leverage, coupon and hold period — every input editable and provenance-tagged.</span></div>
+<div style="padding:20px 22px;display:flex;flex-direction:column;gap:9px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#a8792c">03 Export</span><span style="font:600 13.5px/1.3 'Instrument Sans',sans-serif;color:#14161a">A live workbook</span><span style="font:400 12px/1.55 'Instrument Sans',sans-serif;color:#5c6067">Excel out with formulas intact and recalculation verified — no hardcoded outputs.</span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:0;border:1px solid #e3e0d9;background:#fcfbf9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Recent runs</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Session only</span></div>
+<div style="padding:24px 20px 26px;display:flex;flex-direction:column;align-items:center;gap:8px"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#b6bac0">— No saved models yet —</span><span style="font:400 11.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Generated models appear here and can be compared side by side.</span></div>
+</div>
+<span style="font:400 10.5px/1.6 'Instrument Sans',sans-serif;color:#9ea1a7">Source SEC EDGAR · contact email required by SEC fair access · prices via market data provider, degrades gracefully</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1e">
+<div class="dv-olabel" style="display: {{ badgeDisplay }}"><a class="dv-oid" href="#1e">1e</a>Loading — cold-start backend wake + skeletons</div>
+<div class="dv-card" style="width:1280px" data-screen-label="1e Loading state">
+<div style="display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 20px;background:#14161a">
+<div style="display:flex;align-items:center;gap:14px"><div style="width:9px;height:9px;flex:none;background:#a8792c;transform:rotate(45deg) translateY(0)"></div><span style="font:400 27px/1 'Pinyon Script',cursive;color:#fcfbf9;display:block;transform:translateY(-2px)">Deal Suite</span></div>
+<div style="display:flex;align-items:center;gap:10px"><div style="width:6px;height:6px;border-radius:50%;background:#d3ab60"></div><span style="font:500 10px/1 'Instrument Sans',sans-serif;letter-spacing:.02em;color:#d3ab60">Waking service — cold start</span></div>
+<span style="font:500 11px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Settings</span>
+</div>
+<div style="display:flex;align-items:stretch">
+<div style="width:196px;flex:none;background:#fcfbf9;border-right:1px solid #e3e0d9;padding:20px 0;display:flex;flex-direction:column;gap:2px">
+<div style="padding:0 16px 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Workspace</div>
+<div style="padding:7px 16px;border-left:2px solid #a8792c;background:#f5edda;font:600 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">Model builder</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#b6bac0">Comparison</div>
+</div>
+<div style="flex:1;min-width:0;padding:22px 24px 30px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#faf1e2;border:1px solid #e8d4a8">
+<div style="display:flex;flex-direction:column;gap:5px"><span style="font:600 11.5px/1 'Instrument Sans',sans-serif;color:#96631a">Backend is waking from idle — first request can take ~20 seconds.</span><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#a8792c">Pulling 10-K FY24 · parsing XBRL facts · 6 of 22</span></div>
+<span style="font:500 11px/1 'Instrument Sans',sans-serif;color:#96631a">00:07</span>
+</div>
+<div style="height:3px;background:#eeece6"><div style="width:34%;height:100%;background:#a8792c"></div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+<div style="background:#fcfbf9;border:1px solid #e3e0d9;padding:18px;display:flex;flex-direction:column;gap:12px;min-height:190px"><div style="width:44%;height:9px;background:#eeece6"></div><div style="width:70%;height:24px;background:#f2f0ea"></div><div style="width:100%;height:9px;background:#f2f0ea"></div><div style="width:88%;height:9px;background:#f2f0ea"></div><div style="width:62%;height:9px;background:#f2f0ea"></div></div>
+<div style="background:#fcfbf9;border:1px solid #e3e0d9;padding:18px;display:flex;flex-direction:column;gap:12px;min-height:190px"><div style="width:40%;height:9px;background:#eeece6"></div><div style="width:100%;height:9px;background:#f2f0ea"></div><div style="width:94%;height:9px;background:#f2f0ea"></div><div style="width:80%;height:9px;background:#f2f0ea"></div><div style="width:56%;height:9px;background:#f2f0ea"></div></div>
+<div style="background:#fcfbf9;border:1px solid #e3e0d9;padding:18px;display:flex;flex-direction:column;gap:12px;min-height:190px"><div style="width:52%;height:9px;background:#eeece6"></div><div style="width:66%;height:24px;background:#f2f0ea"></div><div style="width:90%;height:9px;background:#f2f0ea"></div><div style="width:74%;height:9px;background:#f2f0ea"></div></div>
+</div>
+<div style="background:#fcfbf9;border:1px solid #e3e0d9;padding:18px;display:flex;flex-direction:column;gap:12px"><div style="width:22%;height:9px;background:#eeece6"></div><div style="width:100%;height:9px;background:#f2f0ea"></div><div style="width:100%;height:9px;background:#f2f0ea"></div><div style="width:96%;height:9px;background:#f2f0ea"></div><div style="width:83%;height:9px;background:#f2f0ea"></div></div>
+<span style="font:400 10.5px/1.6 'Instrument Sans',sans-serif;color:#9ea1a7">Step 1 · resolve CIK ✓ · step 2 fetch filings ✓ · step 3 normalize facts … · step 4 validate · step 5 build schedule</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1f">
+<div class="dv-olabel" style="display: {{ badgeDisplay }}"><a class="dv-oid" href="#1f">1f</a>M&amp;A Modeler — deal builder, accretion/dilution generated</div>
+<div class="dv-card" style="width:1280px" data-screen-label="1f M&A deal builder filled">
+<div style="display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 20px;background:#14161a">
+<div style="display:flex;align-items:center;gap:14px"><div style="width:9px;height:9px;flex:none;background:#a8792c;transform:rotate(45deg) translateY(0)"></div><span style="font:400 27px/1 'Pinyon Script',cursive;color:#fcfbf9;display:block;transform:translateY(-2px)">Deal Suite</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86">Accretion / dilution</span></div>
+<div style="display:flex;border:1px solid #2c3138"><div style="padding:6px 16px;font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;white-space:nowrap;flex:none">LBO Analyzer</div><div style="padding:6px 16px;background:#fcfbf9;font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">M&amp;A Modeler</div></div>
+<div style="display:flex;align-items:center;gap:14px"><span style="padding:4px 8px;border:1px solid #2c3138;font:500 10px/1 'Instrument Sans',sans-serif;color:#c8bfa8">Add API key for AI analysis</span></div>
+</div>
+<div style="display:flex;align-items:stretch">
+<div style="width:196px;flex:none;background:#fcfbf9;border-right:1px solid #e3e0d9;padding:20px 0;display:flex;flex-direction:column;gap:2px">
+<div style="padding:0 16px 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Workspace</div>
+<div style="padding:7px 16px;border-left:2px solid #a8792c;background:#f5edda;font:600 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">Deal builder</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Comparison<span style="float:right;font:500 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">2</span></div>
+<div style="margin-top:16px;padding:0 16px 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Deal</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Sources &amp; uses</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Purchase price allocation</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Pro forma income statement</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Market concentration</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Sensitivity</div>
+</div>
+<div style="flex:1;min-width:0;padding:20px 24px 26px;display:flex;flex-direction:column;gap:18px">
+
+<div style="display:flex;align-items:stretch;gap:12px">
+<div style="flex:1;background:#fcfbf9;border:1px solid #e3e0d9;padding:14px 16px;display:flex;align-items:center;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Acquirer</span><span style="font:600 13.5px/1 'Instrument Sans',sans-serif;color:#14161a">Placeholder Holdings — TICKER-A</span></div>
+<div style="display:flex;gap:18px"><div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end"><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Price</span><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">42.50</span></div><div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end"><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7">EPS</span><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">2.84</span></div></div>
+</div>
+<div style="align-self:center;font:500 13px/1 'Instrument Sans',sans-serif;color:#a8792c">+</div>
+<div style="flex:1;background:#fcfbf9;border:1px solid #e3e0d9;padding:14px 16px;display:flex;align-items:center;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Target</span><span style="font:600 13.5px/1 'Instrument Sans',sans-serif;color:#14161a">Placeholder Systems — TICKER-B</span></div>
+<div style="display:flex;gap:18px"><div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end"><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Price</span><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">18.20</span></div><div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end"><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#9ea1a7">EPS</span><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">0.96</span></div></div>
+</div>
+<div style="display:flex;align-items:center;padding:0 20px;background:#14161a;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#fcfbf9">Generate model</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(5,1fr);background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="padding:16px 18px;border-right:1px solid #eeece6;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">yr 1 EPS impact</span><span style="font:500 27px/1 'Instrument Sans',sans-serif;color:#1f6f4a">+4.6%</span><span style="font:500 10.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a">▲ Accretive</span></div>
+<div style="padding:16px 18px;border-right:1px solid #eeece6;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Offer premium</span><span style="font:500 27px/1 'Instrument Sans',sans-serif;color:#14161a">27.5%</span><span style="font:500 10.5px/1 'Instrument Sans',sans-serif;color:#7b7f86">To unaffected price</span></div>
+<div style="padding:16px 18px;border-right:1px solid #eeece6;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Consideration</span><span style="font:500 27px/1 'Instrument Sans',sans-serif;color:#14161a">60/40</span><span style="font:500 10.5px/1 'Instrument Sans',sans-serif;color:#7b7f86">Cash / stock</span></div>
+<div style="padding:16px 18px;border-right:1px solid #eeece6;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Pro forma leverage</span><span style="font:500 27px/1 'Instrument Sans',sans-serif;color:#14161a">3.4×</span><span style="font:500 10.5px/1 'Instrument Sans',sans-serif;color:#96631a">■ From 2.1×</span></div>
+<div style="padding:16px 18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Post-deal HHI</span><span style="font:500 27px/1 'Instrument Sans',sans-serif;color:#14161a">1,842</span><span style="font:500 10.5px/1 'Instrument Sans',sans-serif;color:#96631a">■ +268 · Moderate</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Sources &amp; uses</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">USD mm · balanced</span></div>
+<div style="padding:6px 16px 16px">
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">New acquisition debt</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">2,120</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Acquirer stock issued</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">1,413</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Cash on hand</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">410</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #e3e0d9"><span style="font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a">Total sources</span><span style="font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a">3,943</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Target equity purchase</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">3,384</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Target debt refinanced</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">430</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Fees &amp; expenses</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">129</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0"><span style="font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a">Total uses</span><span style="font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a">3,943</span></div>
+</div>
+</div>
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Purchase price allocation</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">USD mm</span></div>
+<div style="padding:6px 16px 16px">
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Purchase consideration</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">3,384</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Target book equity</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">(1,082)</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Intangibles step-up</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">640</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Deferred tax liability</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">(154)</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #e3e0d9"><span style="font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a">Goodwill created</span><span style="font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a">2,788</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f2f0ea"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Incremental amortization</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232">(64)/yr</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0"><span style="font:400 12px/1 'Instrument Sans',sans-serif;color:#5c6067">Synergies phased</span><span style="display:flex;align-items:center;gap:8px"><span style="padding:2px 5px;background:#f7eddb;font:600 9.5px/1.3 'Instrument Sans',sans-serif;color:#96631a">Assumption</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#1d4ed8">120 · 50/75/100%</span></span></div>
+</div>
+</div>
+</div>
+
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Pro forma income statement &amp; EPS bridge</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">USD mm except per share</span></div>
+<table style="width:100%;border-collapse:collapse">
+<thead><tr>
+<th style="text-align:left;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Line item</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Acquirer</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Target</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Adjustments</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Pro forma Y1</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y2</th>
+<th style="text-align:right;padding:9px 16px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Y3</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Revenue</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">4,820</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">1,640</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#7b7f86;border-bottom:1px solid #f2f0ea">—</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">6,460</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">6,718</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">6,987</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">EBITDA</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">742</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">248</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a;border-bottom:1px solid #f2f0ea">+60</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">1,050</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">1,121</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">1,186</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">D&amp;A incl. step-up</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">(214)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">(78)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232;border-bottom:1px solid #f2f0ea">(64)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">(356)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">(361)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">(367)</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Interest expense</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">(96)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">(31)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232;border-bottom:1px solid #f2f0ea">(162)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">(289)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">(271)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">(251)</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Net income</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">328</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">106</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#a83232;border-bottom:1px solid #f2f0ea">(126)</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">308</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">352</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">397</td>
+</tr>
+<tr>
+<td style="padding:9px 16px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Diluted shares</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">115.5</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#7b7f86;border-bottom:1px solid #f2f0ea">—</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">+33.2</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">148.7</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">148.7</td>
+<td style="text-align:right;padding:9px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">148.7</td>
+</tr>
+<tr>
+<td style="padding:11px 16px;font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">EPS — accretion / (dilution)</td>
+<td style="text-align:right;padding:11px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">2.84</td>
+<td style="text-align:right;padding:11px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">0.96</td>
+<td style="text-align:right;padding:11px 16px;font:500 12px/1 'Instrument Sans',sans-serif;color:#7b7f86;background:#f8f6f1">—</td>
+<td style="text-align:right;padding:11px 16px;font:600 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a;background:#f8f6f1">2.97 · +4.6%</td>
+<td style="text-align:right;padding:11px 16px;font:600 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a;background:#f8f6f1">3.11 · +9.5%</td>
+<td style="text-align:right;padding:11px 16px;font:600 12px/1 'Instrument Sans',sans-serif;color:#1f6f4a;background:#f8f6f1">3.26 · +14.8%</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Market concentration — HHI</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">User-entered shares</span></div>
+<div style="padding:14px 16px 16px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:flex-end;gap:8px;height:96px">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:62px;background:#a8792c"></div><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">PF co</span></div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:44px;background:#c9b98c"></div><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">Rival 1</span></div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:32px;background:#dfd9c8"></div><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">Rival 2</span></div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:22px;background:#e3e0d9"></div><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">Rival 3</span></div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:14px;background:#eeece6"></div><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">Other</span></div>
+</div>
+<div style="display:flex;justify-content:space-between;padding-top:10px;border-top:1px solid #f2f0ea"><span style="font:400 11.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Pre-deal HHI</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">1,574</span></div>
+<div style="display:flex;justify-content:space-between"><span style="font:400 11.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Post-deal HHI</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#14161a">1,842</span></div>
+<div style="display:flex;justify-content:space-between"><span style="font:400 11.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Delta</span><span style="font:500 12px/1 'Instrument Sans',sans-serif;color:#96631a">+268 — moderately concentrated</span></div>
+</div>
+</div>
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">EPS sensitivity — yr 1</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Premium × cash mix</span></div>
+<div style="padding:14px 16px 16px">
+<div style="display:grid;grid-template-columns:60px repeat(4,1fr);gap:2px">
+<div></div>
+<div style="text-align:center;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;padding-bottom:6px">40%</div>
+<div style="text-align:center;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;padding-bottom:6px">50%</div>
+<div style="text-align:center;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;padding-bottom:6px">60%</div>
+<div style="text-align:center;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7;padding-bottom:6px">70%</div>
+<div style="display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">20%</div>
+<div style="padding:10px 0;text-align:center;background:#e6efe9;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a">+5.9</div>
+<div style="padding:10px 0;text-align:center;background:#dbeae1;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a">+6.8</div>
+<div style="padding:10px 0;text-align:center;background:#cfe3d7;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#1a5c3d">+7.6</div>
+<div style="padding:10px 0;text-align:center;background:#c2dccd;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#1a5c3d">+8.4</div>
+<div style="display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font:600 10px/1 'Instrument Sans',sans-serif;color:#14161a">27.5%</div>
+<div style="padding:10px 0;text-align:center;background:#f0f5f1;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a">+3.1</div>
+<div style="padding:10px 0;text-align:center;background:#e6efe9;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a">+3.9</div>
+<div style="padding:10px 0;text-align:center;background:#14161a;font:600 11.5px/1 'Instrument Sans',sans-serif;color:#d3ab60">+4.6</div>
+<div style="padding:10px 0;text-align:center;background:#dbeae1;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a">+5.4</div>
+<div style="display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">35%</div>
+<div style="padding:10px 0;text-align:center;background:#faf1e2;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#96631a">+0.4</div>
+<div style="padding:10px 0;text-align:center;background:#f0f5f1;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a">+1.2</div>
+<div style="padding:10px 0;text-align:center;background:#f0f5f1;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a">+1.9</div>
+<div style="padding:10px 0;text-align:center;background:#e6efe9;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a">+2.7</div>
+<div style="display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">45%</div>
+<div style="padding:10px 0;text-align:center;background:#f6e8e6;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#a83232">−2.8</div>
+<div style="padding:10px 0;text-align:center;background:#f6e8e6;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#a83232">−2.0</div>
+<div style="padding:10px 0;text-align:center;background:#faf1e2;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#96631a">−1.3</div>
+<div style="padding:10px 0;text-align:center;background:#faf1e2;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#96631a">−0.5</div>
+</div>
+<div style="margin-top:12px;font:400 10.5px/1.5 'Instrument Sans',sans-serif;color:#9ea1a7">% EPS impact · rows offer premium · cols cash consideration · base case outlined</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1g">
+<div class="dv-olabel" style="display: {{ badgeDisplay }}"><a class="dv-oid" href="#1g">1g</a>M&amp;A — validation warnings before generation</div>
+<div class="dv-card" style="width:1280px" data-screen-label="1g M&A validation warnings">
+<div style="display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 20px;background:#14161a">
+<div style="display:flex;align-items:center;gap:14px"><div style="width:9px;height:9px;flex:none;background:#a8792c;transform:rotate(45deg) translateY(0)"></div><span style="font:400 27px/1 'Pinyon Script',cursive;color:#fcfbf9;display:block;transform:translateY(-2px)">Deal Suite</span></div>
+<div style="display:flex;border:1px solid #2c3138"><div style="padding:6px 16px;font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;white-space:nowrap;flex:none">LBO Analyzer</div><div style="padding:6px 16px;background:#fcfbf9;font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">M&amp;A Modeler</div></div>
+<span style="font:500 11px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Settings</span>
+</div>
+<div style="display:flex;align-items:stretch">
+<div style="width:196px;flex:none;background:#fcfbf9;border-right:1px solid #e3e0d9;padding:20px 0;display:flex;flex-direction:column;gap:2px">
+<div style="padding:0 16px 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Workspace</div>
+<div style="padding:7px 16px;border-left:2px solid #a8792c;background:#f5edda;font:600 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">Deal builder</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Comparison</div>
+<div style="margin-top:16px;padding:0 16px 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Deal</div>
+<div style="padding:7px 16px;background:#f6e8e6;border-left:2px solid #a83232;font:600 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">Data validation<span style="float:right;font:500 10px/1 'Instrument Sans',sans-serif;color:#a83232">4</span></div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#c9ccd1">Pro forma statements</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#c9ccd1">Sensitivity</div>
+</div>
+<div style="flex:1;min-width:0;padding:20px 24px 30px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#f6e8e6;border:1px solid #e6bfba">
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 13px/1 'Instrument Sans',sans-serif;color:#8c2a2a">Validation failed — 1 blocking issue, 3 warnings</span><span style="font:400 11.5px/1.5 'Instrument Sans',sans-serif;color:#a83232">Generation is disabled until the blocking issue is resolved. Warnings can be accepted; they are carried into the workbook's provenance sheet.</span></div>
+<div style="display:flex;gap:8px"><span style="padding:9px 15px;background:#fcfbf9;border:1px solid #d6d2c9;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#7b7f86">Generate model</span><span style="padding:9px 15px;background:#14161a;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#fcfbf9">Fix inputs</span></div>
+</div>
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid #eeece6"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">Data validation log</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">22 Fields checked · 18 pass</span></div>
+<table style="width:100%;border-collapse:collapse">
+<thead><tr>
+<th style="text-align:left;padding:9px 18px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9;width:96px">Severity</th>
+<th style="text-align:left;padding:9px 18px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9;width:170px">Field</th>
+<th style="text-align:left;padding:9px 18px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Finding</th>
+<th style="text-align:left;padding:9px 18px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9;width:190px">Source</th>
+<th style="text-align:right;padding:9px 18px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9;width:110px">Action</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="padding:11px 18px;border-bottom:1px solid #f2f0ea"><span style="padding:3px 6px;background:#f6e8e6;font:600 9.5px/1.3 'Instrument Sans',sans-serif;color:#a83232">Blocking</span></td>
+<td style="padding:11px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Target diluted shares</td>
+<td style="padding:11px 18px;font:400 12px/1.4 'Instrument Sans',sans-serif;color:#5c6067;border-bottom:1px solid #f2f0ea">Not reported in the latest 10-Q; basic count found but dilution cannot be derived.</td>
+<td style="padding:11px 18px;font:400 10.5px/1.4 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #f2f0ea">10-Q Q3 · XBRL missing</td>
+<td style="text-align:right;padding:11px 18px;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#1d4ed8;border-bottom:1px solid #f2f0ea">Enter value</td>
+</tr>
+<tr>
+<td style="padding:11px 18px;border-bottom:1px solid #f2f0ea"><span style="padding:3px 6px;background:#f7eddb;font:600 9.5px/1.3 'Instrument Sans',sans-serif;color:#96631a">Warning</span></td>
+<td style="padding:11px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Acquirer share price</td>
+<td style="padding:11px 18px;font:400 12px/1.4 'Instrument Sans',sans-serif;color:#5c6067;border-bottom:1px solid #f2f0ea">Market data unavailable — substituted last close from filing cover page.</td>
+<td style="padding:11px 18px;font:400 10.5px/1.4 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #f2f0ea">Substituted · 42.50</td>
+<td style="text-align:right;padding:11px 18px;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#1d4ed8;border-bottom:1px solid #f2f0ea">Override</td>
+</tr>
+<tr>
+<td style="padding:11px 18px;border-bottom:1px solid #f2f0ea"><span style="padding:3px 6px;background:#f7eddb;font:600 9.5px/1.3 'Instrument Sans',sans-serif;color:#96631a">Warning</span></td>
+<td style="padding:11px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Target D&amp;A</td>
+<td style="padding:11px 18px;font:400 12px/1.4 'Instrument Sans',sans-serif;color:#5c6067;border-bottom:1px solid #f2f0ea">Defaulted to 4.8% of revenue — sector median applied, no segment disclosure.</td>
+<td style="padding:11px 18px;font:400 10.5px/1.4 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #f2f0ea">Defaulted · 78.7</td>
+<td style="text-align:right;padding:11px 18px;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#1d4ed8;border-bottom:1px solid #f2f0ea">Override</td>
+</tr>
+<tr>
+<td style="padding:11px 18px;border-bottom:1px solid #f2f0ea"><span style="padding:3px 6px;background:#f7eddb;font:600 9.5px/1.3 'Instrument Sans',sans-serif;color:#96631a">Warning</span></td>
+<td style="padding:11px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Fiscal year alignment</td>
+<td style="padding:11px 18px;font:400 12px/1.4 'Instrument Sans',sans-serif;color:#5c6067;border-bottom:1px solid #f2f0ea">Acquirer FY ends Dec, target FY ends Jun — target figures calendarized.</td>
+<td style="padding:11px 18px;font:400 10.5px/1.4 'Instrument Sans',sans-serif;color:#9ea1a7;border-bottom:1px solid #f2f0ea">Derived · 4-quarter roll</td>
+<td style="text-align:right;padding:11px 18px;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#1d4ed8;border-bottom:1px solid #f2f0ea">Review</td>
+</tr>
+<tr>
+<td style="padding:11px 18px"><span style="padding:3px 6px;background:#e6efe9;font:600 9.5px/1.3 'Instrument Sans',sans-serif;color:#1f6f4a">Pass</span></td>
+<td style="padding:11px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e">Revenue, EBITDA, debt, cash</td>
+<td style="padding:11px 18px;font:400 12px/1.4 'Instrument Sans',sans-serif;color:#5c6067">All read directly from filed XBRL facts for both parties.</td>
+<td style="padding:11px 18px;font:400 10.5px/1.4 'Instrument Sans',sans-serif;color:#9ea1a7">10-K FY24 · filed</td>
+<td style="text-align:right;padding:11px 18px;font:400 11px/1 'Instrument Sans',sans-serif;color:#9ea1a7">—</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+<div style="background:#fcfbf9;border:1px solid #e3e0d9;padding:16px 18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Fields filed</span><span style="font:500 24px/1 'Instrument Sans',sans-serif;color:#14161a">18</span><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a">Direct from XBRL</span></div>
+<div style="background:#fcfbf9;border:1px solid #e3e0d9;padding:16px 18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Defaulted / substituted</span><span style="font:500 24px/1 'Instrument Sans',sans-serif;color:#14161a">3</span><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#96631a">Carried to provenance sheet</span></div>
+<div style="background:#fcfbf9;border:1px solid #e3e0d9;padding:16px 18px;display:flex;flex-direction:column;gap:8px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Missing</span><span style="font:500 24px/1 'Instrument Sans',sans-serif;color:#a83232">1</span><span style="font:400 10.5px/1 'Instrument Sans',sans-serif;color:#a83232">User input required</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1h">
+<div class="dv-olabel" style="display: {{ badgeDisplay }}"><a class="dv-oid" href="#1h">1h</a>Comparison — saved models side by side</div>
+<div class="dv-card" style="width:1280px" data-screen-label="1h Comparison view">
+<div style="display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 20px;background:#14161a">
+<div style="display:flex;align-items:center;gap:14px"><div style="width:9px;height:9px;flex:none;background:#a8792c;transform:rotate(45deg) translateY(0)"></div><span style="font:400 27px/1 'Pinyon Script',cursive;color:#fcfbf9;display:block;transform:translateY(-2px)">Deal Suite</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#7b7f86">Comparison · 3 saved models</span></div>
+<div style="display:flex;align-items:center;gap:12px"><span style="padding:4px 8px;border:1px solid #2c3138;font:500 10px/1 'Instrument Sans',sans-serif;color:#c8bfa8">API key added</span><span style="font:500 11px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Settings</span></div>
+</div>
+<div style="display:flex;align-items:stretch">
+<div style="width:196px;flex:none;background:#fcfbf9;border-right:1px solid #e3e0d9;padding:20px 0;display:flex;flex-direction:column;gap:2px">
+<div style="padding:0 16px 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Workspace</div>
+<div style="padding:7px 16px;font:400 12.5px/1 'Instrument Sans',sans-serif;color:#5c6067">Model builder</div>
+<div style="padding:7px 16px;border-left:2px solid #a8792c;background:#f5edda;font:600 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">Comparison<span style="float:right;font:500 10px/1 'Instrument Sans',sans-serif;color:#a8792c">3</span></div>
+<div style="margin-top:16px;padding:0 16px 8px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Saved runs</div>
+<div style="padding:7px 16px;font:400 12px/1.4 'Instrument Sans',sans-serif;color:#5c6067">A · 14:22</div>
+<div style="padding:7px 16px;font:400 12px/1.4 'Instrument Sans',sans-serif;color:#5c6067">B · 14:31</div>
+<div style="padding:7px 16px;font:400 12px/1.4 'Instrument Sans',sans-serif;color:#5c6067">C · 14:44</div>
+</div>
+<div style="flex:1;min-width:0;padding:20px 24px 30px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:flex-end;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#a8792c">Scenario comparison</span><span style="font:600 18px/1.2 'Instrument Sans',sans-serif;color:#14161a">TICKER-A — three leverage cases</span></div>
+<div style="display:flex;gap:8px"><span style="padding:9px 15px;background:#fcfbf9;border:1px solid #d6d2c9;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#23272e">Export comparison</span><span style="padding:9px 15px;background:#14161a;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#fcfbf9">Narrative report</span></div>
+</div>
+<div style="background:#fcfbf9;border:1px solid #e3e0d9">
+<table style="width:100%;border-collapse:collapse">
+<thead><tr>
+<th style="text-align:left;padding:11px 18px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9">Metric</th>
+<th style="text-align:right;padding:11px 18px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;border-bottom:1px solid #e3e0d9;background:#f8f6f1">Case A — 5.0×</th>
+<th style="text-align:right;padding:11px 18px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;border-bottom:1px solid #e3e0d9">Case B — 5.5×</th>
+<th style="text-align:right;padding:11px 18px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;border-bottom:1px solid #e3e0d9">Case C — 6.0×</th>
+<th style="text-align:right;padding:11px 18px;font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7;border-bottom:1px solid #e3e0d9;width:150px">Spread A→C</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="padding:11px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Sponsor IRR</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea;background:#f8f6f1">21.9%</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">24.8%</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">27.4%</td>
+<td style="text-align:right;padding:11px 18px;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a;border-bottom:1px solid #f2f0ea">+550 bps</td>
+</tr>
+<tr>
+<td style="padding:11px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">MoIC</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea;background:#f8f6f1">2.19×</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">2.42×</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">2.66×</td>
+<td style="text-align:right;padding:11px 18px;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a;border-bottom:1px solid #f2f0ea">+0.47×</td>
+</tr>
+<tr>
+<td style="padding:11px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Sponsor equity</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea;background:#f8f6f1">4,103</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">3,732</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">3,361</td>
+<td style="text-align:right;padding:11px 18px;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#7b7f86;border-bottom:1px solid #f2f0ea">−742</td>
+</tr>
+<tr>
+<td style="padding:11px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Min DSCR</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a;border-bottom:1px solid #f2f0ea;background:#f8f6f1">1.42×</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#96631a;border-bottom:1px solid #f2f0ea">1.24×</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#a83232;border-bottom:1px solid #f2f0ea">1.08×</td>
+<td style="text-align:right;padding:11px 18px;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#a83232;border-bottom:1px solid #f2f0ea">−0.34×</td>
+</tr>
+<tr>
+<td style="padding:11px 18px;font:400 12px/1 'Instrument Sans',sans-serif;color:#23272e;border-bottom:1px solid #f2f0ea">Exit leverage</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea;background:#f8f6f1">2.0×</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">2.4×</td>
+<td style="text-align:right;padding:11px 18px;font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a;border-bottom:1px solid #f2f0ea">2.9×</td>
+<td style="text-align:right;padding:11px 18px;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#7b7f86;border-bottom:1px solid #f2f0ea">+0.9×</td>
+</tr>
+<tr>
+<td style="padding:11px 18px;font:600 12px/1 'Instrument Sans',sans-serif;color:#14161a;background:#f8f6f1">Feasibility score</td>
+<td style="text-align:right;padding:11px 18px;font:600 12.5px/1 'Instrument Sans',sans-serif;color:#1f6f4a;background:#f2efe6">86 · financeable</td>
+<td style="text-align:right;padding:11px 18px;font:600 12.5px/1 'Instrument Sans',sans-serif;color:#96631a;background:#f8f6f1">78 · tight</td>
+<td style="text-align:right;padding:11px 18px;font:600 12.5px/1 'Instrument Sans',sans-serif;color:#a83232;background:#f8f6f1">61 · stressed</td>
+<td style="text-align:right;padding:11px 18px;font:500 11.5px/1 'Instrument Sans',sans-serif;color:#7b7f86;background:#f8f6f1">−25 pts</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px">
+<div style="background:#14161a;padding:18px 20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#fcfbf9">Narrative report</span><span style="font:400 10px/1 'Instrument Sans',sans-serif;color:#7b7f86">Generated with your key, never stored</span></div>
+<span style="font:400 12.5px/1.7 'Instrument Sans',sans-serif;color:#b6bac0;text-wrap:pretty">Case B is the balanced structure: it captures 290 bps of incremental IRR over Case A while holding minimum DSCR above 1.20×. Case C adds a further 260 bps but breaches covenant comfort in year one, and its feasibility score falls 25 points on debt service alone. Across all three cases, roughly two thirds of value creation comes from EBITDA growth rather than deleveraging.</span>
+<div style="display:flex;gap:8px;margin-top:4px"><span style="padding:4px 8px;border:1px solid #2c3138;font:500 9.5px/1.3 'Instrument Sans',sans-serif;color:#c8bfa8">Draft · review before use</span><span style="padding:4px 8px;border:1px solid #2c3138;font:500 9.5px/1.3 'Instrument Sans',sans-serif;color:#c8bfa8">Sources: 3 models</span></div>
+</div>
+<div style="background:#fcfbf9;border:1px solid #e3e0d9;padding:16px 18px;display:flex;flex-direction:column;gap:12px">
+<span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#14161a;white-space:nowrap;flex:none">IRR by case</span>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;flex-direction:column;gap:5px"><div style="display:flex;justify-content:space-between"><span style="font:400 11px/1 'Instrument Sans',sans-serif;color:#7b7f86">A</span><span style="font:500 11px/1 'Instrument Sans',sans-serif;color:#14161a">21.9%</span></div><div style="height:8px;background:#eeece6"><div style="width:73%;height:100%;background:#dfd9c8"></div></div></div>
+<div style="display:flex;flex-direction:column;gap:5px"><div style="display:flex;justify-content:space-between"><span style="font:400 11px/1 'Instrument Sans',sans-serif;color:#7b7f86">B</span><span style="font:500 11px/1 'Instrument Sans',sans-serif;color:#14161a">24.8%</span></div><div style="height:8px;background:#eeece6"><div style="width:85%;height:100%;background:#a8792c"></div></div></div>
+<div style="display:flex;flex-direction:column;gap:5px"><div style="display:flex;justify-content:space-between"><span style="font:400 11px/1 'Instrument Sans',sans-serif;color:#7b7f86">C</span><span style="font:500 11px/1 'Instrument Sans',sans-serif;color:#14161a">27.4%</span></div><div style="height:8px;background:#eeece6"><div style="width:96%;height:100%;background:#c9b98c"></div></div></div>
+</div>
+<span style="margin-top:auto;font:400 10px/1.5 'Instrument Sans',sans-serif;color:#9ea1a7">Higher IRR, lower headroom — read with DSCR row.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1i">
+<div class="dv-olabel" style="display: {{ badgeDisplay }}"><a class="dv-oid" href="#1i">1i</a>Settings — add API key for AI analysis</div>
+<div class="dv-card" style="width:1280px;position:relative" data-screen-label="1i Settings modal">
+<div style="filter:blur(1.5px);opacity:.5">
+<div style="display:flex;align-items:center;justify-content:space-between;height:52px;padding:0 20px;background:#14161a"><span style="font:400 27px/1 'Pinyon Script',cursive;color:#fcfbf9;display:block;transform:translateY(-2px)">Deal Suite</span><span style="font:500 11px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Settings</span></div>
+<div style="display:flex;align-items:stretch;height:420px;background:#f3f1ec"><div style="width:196px;background:#fcfbf9;border-right:1px solid #e3e0d9"></div><div style="flex:1;padding:20px 24px;display:flex;flex-direction:column;gap:14px"><div style="height:88px;background:#fcfbf9;border:1px solid #e3e0d9"></div><div style="height:120px;background:#fcfbf9;border:1px solid #e3e0d9"></div><div style="height:130px;background:#fcfbf9;border:1px solid #e3e0d9"></div></div></div>
+</div>
+<div style="position:absolute;inset:0;background:rgba(20,22,26,.34);display:flex;align-items:center;justify-content:center">
+<div style="width:520px;background:#fcfbf9;border:1px solid #14161a;box-shadow:0 18px 48px rgba(20,22,26,.22)">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:16px 22px;background:#14161a"><span style="font:600 10.5px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#fcfbf9">Add API key for AI analysis</span><span style="font:400 11px/1 'Instrument Sans',sans-serif;color:#7b7f86">ESC</span></div>
+<div style="padding:20px 22px 22px;display:flex;flex-direction:column;gap:18px">
+<div style="padding:12px 14px;background:#f5edda;border:1px solid #e8d4a8"><span style="font:400 11.5px/1.6 'Instrument Sans',sans-serif;color:#96631a;text-wrap:pretty">Keys are held in this browser session only. They are sent with the requests they authorize and are never logged or persisted server-side. Closing the tab clears them.</span></div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">Provider</span>
+<div style="display:flex;gap:0;border:1px solid #d6d2c9"><span style="flex:1;padding:9px 0;text-align:center;background:#14161a;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#fcfbf9">Anthropic</span><span style="flex:1;padding:9px 0;text-align:center;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#7b7f86">OpenAI</span><span style="flex:1;padding:9px 0;text-align:center;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#7b7f86">Google</span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">API key</span>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:11px 13px;border:1px solid #14161a;background:#fff"><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">••••••••••••••••••••••••3f9a</span><span style="font:600 10px/1 'Instrument Sans',sans-serif;color:#1f6f4a">Added for this session</span></div>
+<span style="font:400 10.5px/1.5 'Instrument Sans',sans-serif;color:#9ea1a7">Used only for narrative reports and comparison commentary.</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font:600 10px/1 'Instrument Sans',sans-serif;letter-spacing:.045em;color:#9ea1a7">SEC contact email</span>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:11px 13px;border:1px solid #d6d2c9;background:#fff"><span style="font:500 12.5px/1 'Instrument Sans',sans-serif;color:#14161a">you@example.com</span><span style="font:600 10px/1 'Instrument Sans',sans-serif;color:#9ea1a7">Required by SEC</span></div>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;padding-top:4px">
+<span style="font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#a83232">Clear key</span>
+<div style="display:flex;gap:8px"><span style="padding:9px 16px;background:#fcfbf9;border:1px solid #d6d2c9;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#23272e">Cancel</span><span style="padding:9px 16px;background:#14161a;font:600 11px/1 'Instrument Sans',sans-serif;white-space:nowrap;color:#fcfbf9">Save for session</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "go with <a class="dv-oid" href="#1a">1a</a>'s rail but <a class="dv-oid" href="#1b">1b</a>'s KPI ribbon" · "make the ink header dark on every screen" · "tighten <a class="dv-oid" href="#1c">1c</a> to one screen of content" · "add the Excel export confirmation state"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      badgeDisplay: (this.props.showBadges ?? true) ? 'flex' : 'none',
+      canvasBg: this.props.canvasTone ?? '#eae7e0',
+    };
+  }
+}
+</script>
+</body>
+</html>

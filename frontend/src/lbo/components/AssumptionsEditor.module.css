@@ -1,148 +1,45 @@
-/* AssumptionsEditor — Dark Mode Financial Dashboard */
+/* Assumptions editor card — terminal vocabulary */
 
-.group {
-  margin-bottom: var(--space-5);
-}
-
-.group:last-child {
-  margin-bottom: 0;
-}
+.group { margin-bottom: 14px; }
 
 .groupTitle {
-  margin: 0 0 var(--space-3);
-  font-size: 0.8rem;
+  font-size: 10px;
   font-weight: 600;
-  color: var(--accent);
-  letter-spacing: 0.03em;
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
+  letter-spacing: 0.045em;
+  color: var(--gold);
+  border-left: 2px solid var(--gold);
+  padding-left: 8px;
+  margin: 0 0 10px;
 }
 
-.groupTitle::before {
-  content: '';
-  width: 3px;
-  height: 14px;
-  background: var(--accent);
-  border-radius: 2px;
-}
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; }
 
-.fields {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-3) var(--space-4);
-}
+.field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 
-.field {
-  display: block;
-}
-
-.inputWrap {
-  position: relative;
-}
-
-.inputWrap .input {
-  padding-right: 2rem;
-}
-
-.suffix {
-  position: absolute;
-  right: var(--space-3);
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-dim);
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  pointer-events: none;
-}
-
-/* Flag tags for data provenance */
 .flagTag {
-  display: inline-block;
-  margin-left: var(--space-2);
-  padding: 2px var(--space-2);
-  border-radius: var(--radius-sm);
-  font-size: 0.6rem;
+  font-size: 9px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  vertical-align: middle;
+  padding: 1px 5px;
+  white-space: nowrap;
 }
+.defaulted, .substituted { background: var(--warning-bg); color: var(--warning); border: 1px solid var(--warning-border); }
 
-.flagTag.defaulted {
-  background: var(--defaulted);
-  color: var(--defaulted-text);
-}
+.inputWrap { display: flex; align-items: center; gap: 5px; }
+.inputWrap input { text-align: right; }
 
-.flagTag.substituted {
-  background: var(--substituted);
-  color: var(--substituted-text);
-}
+.suffix { color: var(--text-faint); font-size: 11px; flex-shrink: 0; }
 
-.flagTag.calculated {
-  background: var(--accent-muted);
-  color: var(--accent);
-}
+.fallbackHint { color: var(--warning); }
 
-.fallbackHint {
-  color: var(--warning);
-}
-
-/* Tooltip for field info */
-.fieldInfo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 14px;
-  height: 14px;
-  margin-left: var(--space-1);
-  border-radius: 50%;
-  background: var(--surface-elevated);
-  color: var(--text-dim);
-  font-size: 0.65rem;
-  cursor: help;
-  vertical-align: middle;
-}
-
-.fieldInfo:hover {
-  color: var(--text-muted);
-  background: var(--border);
-}
-
-/* Implied Debt/Equity Split display */
 .impliedSplit {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-top: var(--space-4);
-  padding: var(--space-3) var(--space-4);
-  background: var(--surface-elevated);
-  border-radius: var(--radius-sm);
-  border: 1px dashed var(--border);
+  align-items: baseline;
+  gap: 12px;
+  background: var(--paper-alt);
+  border: 1px dashed var(--hairline);
+  padding: 8px 12px;
+  margin-top: 10px;
 }
-
-.impliedLabel {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-.impliedValue {
-  font-size: 0.85rem;
-  font-weight: 600;
-  font-family: var(--font-mono);
-  color: var(--accent);
-  letter-spacing: 0.01em;
-}
-
-@media (max-width: 480px) {
-  .fields {
-    grid-template-columns: 1fr;
-  }
-
-  .impliedSplit {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-2);
-  }
-}
+.impliedLabel { font-size: 11px; color: var(--text-muted); }
+.impliedValue { font-size: 12px; font-weight: 600; color: var(--gold); white-space: nowrap; }

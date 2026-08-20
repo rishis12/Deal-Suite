@@ -11,9 +11,9 @@ interface Props {
 }
 
 const GROUPS: Array<{ id: AssumptionMeta['group']; title: string }> = [
-  { id: 'deal', title: 'Deal Structure' },
+  { id: 'deal', title: 'Deal structure' },
   { id: 'operating', title: 'Operating' },
-  { id: 'debt', title: 'Debt Terms' },
+  { id: 'debt', title: 'Debt terms' },
   { id: 'exit', title: 'Exit' },
 ]
 
@@ -72,7 +72,7 @@ export function AssumptionsEditor({
         Assumptions Editor
         <span>{collapsed ? '+' : '−'}</span>
       </button>
-      <h2 className="tile-title">Assumptions Editor</h2>
+      <h2 className="tile-title">Assumptions</h2>
       <div className="collapsible-body">
         {GROUPS.map((g) => (
           <div key={g.id} className={styles.group}>
@@ -118,7 +118,7 @@ export function AssumptionsEditor({
             {/* Show Implied Debt/Equity Split after Deal Structure fields */}
             {g.id === 'deal' && (
               <div className={styles.impliedSplit}>
-                <span className={styles.impliedLabel}>Implied Debt / Equity Split</span>
+                <span className={styles.impliedLabel}>Implied debt / equity split</span>
                 <span className={styles.impliedValue}>
                   {(debtPct * 100).toFixed(0)}% debt / {(equityPct * 100).toFixed(0)}% equity
                 </span>
@@ -133,7 +133,7 @@ export function AssumptionsEditor({
           onClick={onGenerate}
           disabled={generating}
         >
-          {generating ? 'Generating…' : 'Generate Model'}
+          {generating ? 'Generating…' : 'Generate model'}
         </button>
       </div>
     </section>

@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/react'
 import LboApp from './lbo/App'
 import MaApp from './ma/App'
 import { SettingsModal } from './ma/components/SettingsModal'
+import { useBackendWake } from './ma/hooks/useBackendWake'
 import { useSessionKeys } from './useSessionKeys'
 
 type Product = 'lbo' | 'ma'
@@ -19,6 +20,7 @@ export default function App() {
   )
   const [settingsOpen, setSettingsOpen] = useState(false)
   const { keys, save, clear, hasLlmKey } = useSessionKeys()
+  const wake = useBackendWake()
 
   const switchProduct = (next: Product) => {
     if (next !== product) {
@@ -33,39 +35,52 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPop)
   }, [])
 
+  const waking = wake.status === 'waking'
+
   return (
     <div className="app">
-      <header className="app-header suite-header">
-        <div className="brand">
-          <span className="brand-name">Deal Suite</span>
-          <span className="brand-tag">LBO &amp; M&amp;A modeling from SEC filings</span>
+      <header className="masthead">
+        <div className="m-brand">
+          <span className="m-diamond" aria-hidden />
+          <span className="m-wordmark">Deal Suite</span>
+          <span className="m-tag">LBO &amp; M&amp;A modeling from SEC filings</span>
         </div>
 
-        {/* Product switcher — LBO Analyzer vs M&A Modeler */}
-        <nav className="product-switch" aria-label="Product">
-          <button
-            type="button"
-            className={`product-btn ${product === 'lbo' ? 'active' : ''}`}
-            onClick={() => switchProduct('lbo')}
-          >
-            LBO Analyzer
-          </button>
-          <button
-            type="button"
-            className={`product-btn ${product === 'ma' ? 'active' : ''}`}
-            onClick={() => switchProduct('ma')}
-          >
-            M&amp;A Modeler
-          </button>
-        </nav>
+        <div className="m-center">
+          {waking ? (
+            <span className="m-wake">Waking service — cold start</span>
+          ) : (
+            <nav className="m-switch" aria-label="Product">
+              <button
+                type="button"
+                className={`m-switch-btn ${product === 'lbo' ? 'active' : ''}`}
+                onClick={() => switchProduct('lbo')}
+              >
+                LBO Analyzer
+              </button>
+              <button
+                type="button"
+                className={`m-switch-btn ${product === 'ma' ? 'active' : ''}`}
+                onClick={() => switchProduct('ma')}
+              >
+                M&amp;A Modeler
+              </button>
+            </nav>
+          )}
+        </div>
 
-        <button
-          type="button"
-          className="settings-btn"
-          onClick={() => setSettingsOpen(true)}
-        >
-          {hasLlmKey ? '🔑 LLM key set (session)' : 'API Key Settings'}
-        </button>
+        <div className="m-right">
+          <button
+            type="button"
+            className={`m-keybtn ${hasLlmKey ? 'has-key' : ''}`}
+            onClick={() => setSettingsOpen(true)}
+          >
+            {hasLlmKey ? 'API key added' : 'Add API key for AI analysis'}
+          </button>
+          <button type="button" className="m-link" onClick={() => setSettingsOpen(true)}>
+            Settings
+          </button>
+        </div>
       </header>
 
       {/* Both products stay mounted so in-progress models survive switching;

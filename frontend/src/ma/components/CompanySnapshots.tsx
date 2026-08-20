@@ -65,7 +65,7 @@ export function CompanySnapshots({ acquirer, target, priceOverrides, onPriceOver
   return (
     <section className="tile snapshot-tile">
       <div className="tile-head">
-        <h2>Company Data</h2>
+        <h2>Company data</h2>
         <span className="muted-note">Most recent fiscal year, fetched from SEC EDGAR</span>
       </div>
       <table className="data-table">

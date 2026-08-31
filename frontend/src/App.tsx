@@ -77,9 +77,6 @@ export default function App() {
           >
             {hasLlmKey ? 'API key added' : 'Add API key for AI analysis'}
           </button>
-          <button type="button" className="m-link" onClick={() => setSettingsOpen(true)}>
-            Settings
-          </button>
         </div>
       </header>
 

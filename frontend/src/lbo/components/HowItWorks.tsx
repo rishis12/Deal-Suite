@@ -12,7 +12,7 @@ export function HowItWorks({ tickerForm, savedModels }: Props) {
   return (
     <>
       <div className={styles.intro}>
-        <div className="eyebrow-gold">Step 01 — subject company</div>
+        <div className="eyebrow-gold">Step 01 · subject company</div>
         <h1 className={styles.headline}>
           Enter a ticker. The model is built from the company's own filings, not from estimates.
         </h1>
@@ -35,15 +35,16 @@ export function HowItWorks({ tickerForm, savedModels }: Props) {
           <div className="eyebrow-gold">02 Model</div>
           <div className={styles.methodTitle}>Assumptions you own</div>
           <p className={styles.methodCopy}>
-            Entry and exit multiples, leverage, coupon and hold period — every input editable and
-            provenance-tagged.
+            Entry and exit multiples, leverage, coupon and hold period are yours to set. Each one
+            shows whether it came from you, from the filing, or from a default we applied.
           </p>
         </div>
         <div className={styles.method}>
           <div className="eyebrow-gold">03 Export</div>
           <div className={styles.methodTitle}>A live workbook</div>
           <p className={styles.methodCopy}>
-            Excel out with formulas intact and recalculation verified — no hardcoded outputs.
+            Excel out with every cell still a formula. LibreOffice recalculates the whole
+            workbook before any number is shown to you.
           </p>
         </div>
       </div>
@@ -56,7 +57,7 @@ export function HowItWorks({ tickerForm, savedModels }: Props) {
         <div className="card-body">
           {savedModels.length === 0 ? (
             <p className={styles.emptyRuns}>
-              — No saved models yet —
+              No saved models yet.
               <br />
               Generated models appear here and can be compared side by side.
             </p>

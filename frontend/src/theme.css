@@ -663,6 +663,7 @@ input[type='number'].input, .assumption-field input { color: var(--input-value);
 .skeleton-line { height: 13px; background: #f0ede6; margin-bottom: 14px; width: 100%; }
 .skeleton-line.lg { height: 20px; width: 45%; }
 .skeleton-line.sm { width: 60%; }
+.skeleton-tall { min-height: 420px; }
 
 /* ================= Modal ================= */
 

@@ -4,6 +4,7 @@ import { CompanySnapshots } from './components/CompanySnapshots'
 import { ComparisonPanel } from './components/ComparisonPanel'
 import { MarketConcentration } from './components/MarketConcentration'
 import { ResultsPanel } from './components/ResultsPanel'
+import { SkeletonTile } from './components/SkeletonTile'
 import { TickerPairInput } from './components/TickerPairInput'
 import { ValidationPanel } from './components/ValidationPanel'
 import { useBackendWake } from './hooks/useBackendWake'
@@ -185,6 +186,19 @@ export default function MaApp({ keys }: Props) {
               acquirerInfo={state.analysis?.acquirer ?? null}
               targetInfo={state.analysis?.target ?? null}
             />
+
+            {state.phase === 'loading' && (
+              <>
+                <SkeletonTile className="skeleton-wide" />
+                <SkeletonTile className="skeleton-wide skeleton-tall" />
+                <SkeletonTile className="skeleton-wide" />
+                <SkeletonTile className="skeleton-wide" />
+                <p className="step-trail">
+                  Step 1 · resolve tickers to CIK · step 2 fetch SEC filings for both companies ·
+                  step 3 normalize facts · step 4 validate pair
+                </p>
+              </>
+            )}
 
             {state.failedValidation && (
               <div id="ma-validation">

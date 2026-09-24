@@ -27,6 +27,16 @@ from datetime import datetime
 # Cache directory for SEC data
 CACHE_DIR = Path(__file__).parent / ".sec_cache"
 
+# Build-time snapshot of company_tickers.json, baked into the Docker image
+# (see Dockerfile). Render's free tier does not persist local disk writes
+# across a cold start, so CACHE_DIR is empty on every fresh container; this
+# bundled copy lets the very first request after a cold start resolve
+# tickers immediately instead of blocking on (and potentially getting
+# rate-limited by) a live SEC fetch. It goes stale between deploys — a
+# background refresh (see _ensure_background_refresh) keeps it current for
+# any instance that stays warm more than 24h.
+BUNDLED_TICKERS_FILE = Path(__file__).parent / "data" / "company_tickers_bundled.json"
+
 # SEC rate limit: max 10 requests/second -> sleep 0.11s between requests.
 # This limiter is global across ALL SEC calls in the process, so fetching two
 # companies in one user action (roughly double the calls of AIO LBO's
@@ -118,45 +128,173 @@ def fetch_sec_endpoint(url: str, user_agent: str) -> Optional[dict]:
 
 _ticker_mapping_cache: Optional[dict] = None
 
+# The rate-limit message is asserted on by the frontend-facing error path
+# (validator.py / api.py) — it must stay a genuinely different message from
+# the "ticker not found" case so users don't mistake a backend rate-limit
+# for a typo in what they entered.
+SEC_RATE_LIMIT_MESSAGE = (
+    "SEC EDGAR is temporarily rate-limiting requests, please try again in a moment"
+)
 
-def load_ticker_to_cik_mapping(user_agent: str) -> dict:
+
+class SECMappingUnavailableError(Exception):
+    """
+    Raised when company_tickers.json itself could not be obtained (fetch
+    failed) AND no cached or bundled copy exists to fall back on.
+
+    This is deliberately a distinct exception from "ticker not found" —
+    resolve_ticker_to_cik() only returns None (the not-found signal) once
+    the mapping has actually loaded and the ticker genuinely isn't in it.
+    """
+    pass
+
+
+def _fetch_company_tickers_raw(user_agent: str) -> dict:
+    """
+    Fetch company_tickers.json from SEC, with one retry-with-backoff if the
+    first attempt is rate-limited (HTTP 429). Raises SECMappingUnavailableError
+    on any unrecoverable failure, with a message that distinguishes
+    rate-limiting from other failures (network error, unexpected status).
+    """
+    url = "https://www.sec.gov/files/company_tickers.json"
+    headers = {"User-Agent": user_agent, "Accept": "application/json"}
+
+    last_status = None
+    last_error = None
+    for attempt in range(2):
+        _sec_rate_limit()
+        try:
+            response = requests.get(url, headers=headers, timeout=30)
+        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
+            last_error = e
+            if attempt == 0:
+                time.sleep(5)
+                continue
+            raise SECMappingUnavailableError(
+                f"Could not reach SEC EDGAR to fetch the ticker mapping: {e}"
+            )
+
+        if response.status_code == 200:
+            try:
+                return response.json()
+            except json.JSONDecodeError:
+                raise SECMappingUnavailableError(
+                    "SEC EDGAR returned an invalid response fetching the ticker mapping."
+                )
+
+        last_status = response.status_code
+        if response.status_code == 429 and attempt == 0:
+            print("  WARNING: SEC rate-limited company_tickers.json fetch (429), retrying in 5s...")
+            time.sleep(5)
+            continue
+        break
+
+    if last_status == 429:
+        raise SECMappingUnavailableError(SEC_RATE_LIMIT_MESSAGE)
+    if last_status is not None:
+        raise SECMappingUnavailableError(
+            f"Failed to fetch SEC ticker mapping (HTTP {last_status})."
+        )
+    raise SECMappingUnavailableError(
+        f"Failed to fetch SEC ticker mapping: {last_error}"
+    )
+
+
+_refresh_scheduled = False
+_refresh_lock = threading.Lock()
+
+
+def _ensure_background_refresh(user_agent: str) -> None:
+    """
+    Start a once-per-process daily background refresh of the on-disk ticker
+    mapping. Only relevant for instances that stay warm 24h+ — most Render
+    free-tier instances sleep long before that, in which case the bundled
+    (build-time) or on-disk copy is simply what's used until the next deploy
+    or cold start reseeds it. Never blocks a request.
+    """
+    global _refresh_scheduled
+    with _refresh_lock:
+        if _refresh_scheduled:
+            return
+        _refresh_scheduled = True
+
+        def _refresh():
+            try:
+                load_ticker_to_cik_mapping(user_agent, force_refresh=True)
+            except SECMappingUnavailableError as e:
+                print(f"  WARNING: background ticker mapping refresh failed: {e}")
+            timer = threading.Timer(24 * 3600, _refresh)
+            timer.daemon = True
+            timer.start()
+
+        timer = threading.Timer(24 * 3600, _refresh)
+        timer.daemon = True
+        timer.start()
+
+
+def load_ticker_to_cik_mapping(user_agent: str, force_refresh: bool = False) -> dict:
     """
     Load the SEC ticker->CIK mapping file.
     Caches in-process and on disk (24h) to avoid repeated downloads.
+
+    Cold start (no disk cache yet): seeds immediately from the bundled
+    build-time snapshot rather than fetching live from SEC, so the first
+    request after a Render free-tier wake-up never blocks on (or risks
+    rate-limiting against) a live fetch.
+
     Returns dict mapping uppercase ticker -> CIK (as int).
+    Raises SECMappingUnavailableError only if a live fetch is attempted,
+    fails, and there is no disk cache or bundled copy to fall back on.
     """
     global _ticker_mapping_cache
-    if _ticker_mapping_cache is not None:
+    if _ticker_mapping_cache is not None and not force_refresh:
         return _ticker_mapping_cache
 
     CACHE_DIR.mkdir(exist_ok=True)
     cache_file = CACHE_DIR / "company_tickers.json"
 
-    if cache_file.exists():
+    if not force_refresh and not cache_file.exists() and BUNDLED_TICKERS_FILE.exists():
+        print("  Using bundled company_tickers.json snapshot (cold start)")
+        with open(BUNDLED_TICKERS_FILE, "r") as f:
+            raw_data = json.load(f)
+        with open(cache_file, "w") as f:
+            json.dump(raw_data, f)
+        _ticker_mapping_cache = _parse_ticker_mapping(raw_data)
+        _ensure_background_refresh(user_agent)
+        return _ticker_mapping_cache
+
+    if not force_refresh and cache_file.exists():
         file_age_hours = (time.time() - cache_file.stat().st_mtime) / 3600
         if file_age_hours < 24:
             with open(cache_file, "r") as f:
                 raw_data = json.load(f)
             _ticker_mapping_cache = _parse_ticker_mapping(raw_data)
+            _ensure_background_refresh(user_agent)
             return _ticker_mapping_cache
 
     print("  Fetching company_tickers.json from SEC...")
-    url = "https://www.sec.gov/files/company_tickers.json"
-    data = fetch_sec_endpoint(url, user_agent)
-
-    if data is None:
+    try:
+        data = _fetch_company_tickers_raw(user_agent)
+    except SECMappingUnavailableError as e:
         if cache_file.exists():
-            print("  WARNING: Using stale cache due to fetch failure")
+            print(f"  WARNING: {e} — using cached copy from disk")
             with open(cache_file, "r") as f:
                 raw_data = json.load(f)
             _ticker_mapping_cache = _parse_ticker_mapping(raw_data)
             return _ticker_mapping_cache
-        return {}
+        if BUNDLED_TICKERS_FILE.exists():
+            print(f"  WARNING: {e} — using bundled fallback copy")
+            with open(BUNDLED_TICKERS_FILE, "r") as f:
+                raw_data = json.load(f)
+            _ticker_mapping_cache = _parse_ticker_mapping(raw_data)
+            return _ticker_mapping_cache
+        raise
 
     with open(cache_file, "w") as f:
         json.dump(data, f)
 
     _ticker_mapping_cache = _parse_ticker_mapping(data)
+    _ensure_background_refresh(user_agent)
     return _ticker_mapping_cache
 
 
@@ -178,6 +316,12 @@ def resolve_ticker_to_cik(ticker: str, user_agent: str) -> Optional[int]:
     Handles ticker format variations:
     - SEC uses dashes (BRK-B) while markets often use dots (BRK.B)
     - Tries dash format first, then original format as fallback
+
+    Returns None only once the mapping has actually loaded and the ticker
+    genuinely isn't in it. If the mapping itself can't be loaded (e.g. SEC
+    rate-limiting company_tickers.json, with no cached/bundled fallback),
+    load_ticker_to_cik_mapping() raises SECMappingUnavailableError instead —
+    that's a different failure and must not be reported as "not found".
     """
     ticker = ticker.upper()
     mapping = load_ticker_to_cik_mapping(user_agent)
@@ -1121,6 +1265,10 @@ def fetch_ma_pair(
         "acquirer": None,
         "target": None,
         "fetch_status": {"acquirer": "FAILED", "target": "FAILED"},
+        # Populated only when a role's failure is a mapping-fetch failure
+        # (e.g. SEC rate-limiting) rather than a genuine "ticker not found" —
+        # validate_pair() surfaces this in place of the generic message.
+        "fetch_errors": {},
         "fetched_at": datetime.now().isoformat(),
     }
 
@@ -1129,13 +1277,19 @@ def fetch_ma_pair(
             print(f"\n{'#'*60}")
             print(f"# {role.upper()}: {ticker.upper()}")
             print(f"{'#'*60}")
-        profile = fetch_company(
-            ticker.strip().upper(),
-            sec_user_agent,
-            twelve_data_key,
-            verbose=verbose,
-            skip_price=skip_price
-        )
+        try:
+            profile = fetch_company(
+                ticker.strip().upper(),
+                sec_user_agent,
+                twelve_data_key,
+                verbose=verbose,
+                skip_price=skip_price
+            )
+        except SECMappingUnavailableError as e:
+            if verbose:
+                print(f"  ERROR: {e}")
+            result["fetch_errors"][role] = str(e)
+            continue
         if profile is not None:
             profile["role"] = role
             result[role] = profile

@@ -15,11 +15,24 @@ const PROVIDERS: { value: LlmProvider; label: string }[] = [
   { value: 'gemini', label: 'Google' },
 ]
 
+const OWN_LLM_PROMPT = `I exported this deal model from Deal Suite as an Excel workbook and want a narrative write-up without giving the tool my API key. Acting as a deal team associate, review the Assumptions tab and the Results tab I paste below and answer three questions: (1) is the deal financeable under these assumptions, (2) what is the single biggest driver of the return, (3) which one assumption would break the deal if it moved against me. Here are the Assumptions and Results tab values:
+
+[paste the Assumptions tab here]
+
+[paste the Results tab here]`
+
 /** BYOK modal (frame 1i): ink title bar, session-scope disclosure,
     provider segmented control, Clear key / Cancel / Save for session. */
 export function SettingsModal({ open, keys, onClose, onSave, onClear }: Props) {
   const [provider, setProvider] = useState<LlmProvider>(keys.llmProvider)
   const [apiKey, setApiKey] = useState(keys.llmApiKey)
+  const [copied, setCopied] = useState(false)
+
+  const copyPrompt = async () => {
+    await navigator.clipboard.writeText(OWN_LLM_PROMPT)
+    setCopied(true)
+    window.setTimeout(() => setCopied(false), 2000)
+  }
 
   useEffect(() => {
     if (open) {
@@ -109,6 +122,19 @@ export function SettingsModal({ open, keys, onClose, onSave, onClear }: Props) {
                 Used only for narrative reports and comparison commentary.
               </p>
             </div>
+          </div>
+
+          <div className="modal-disclosure" style={{ marginTop: 4 }}>
+            <div className="eyebrow" style={{ marginBottom: 7 }}>
+              No key? Write the narrative yourself
+            </div>
+            <p className="muted-note" style={{ marginTop: 0, marginBottom: 10 }}>
+              Copy this prompt, paste the Assumptions and Results tabs from your exported
+              workbook into it, and run it in any LLM chat you already have open.
+            </p>
+            <button type="button" className="secondary-btn" onClick={copyPrompt}>
+              {copied ? 'Copied' : 'Copy prompt'}
+            </button>
           </div>
 
           <div className="modal-actions">

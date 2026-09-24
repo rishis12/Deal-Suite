@@ -75,7 +75,8 @@ def check_filing_staleness(profile: dict) -> tuple:
     return False, None
 
 
-def validate_company(profile: Optional[dict], role: str = "company") -> dict:
+def validate_company(profile: Optional[dict], role: str = "company",
+                      fetch_error: Optional[str] = None) -> dict:
     """
     Validate one company profile from the Phase 1 data layer.
 
@@ -112,10 +113,16 @@ def validate_company(profile: Optional[dict], role: str = "company") -> dict:
 
     if profile is None:
         result["status"] = "fail"
-        result["disqualifying_reasons"].append(
-            f"No data could be fetched for the {role} — ticker not found or "
-            f"SEC EDGAR returned no usable filings."
-        )
+        if fetch_error:
+            # A distinct backend-side failure (e.g. SEC EDGAR rate-limiting
+            # the company_tickers.json mapping fetch) — NOT a "ticker not
+            # found" situation, so don't say so.
+            result["disqualifying_reasons"].append(fetch_error)
+        else:
+            result["disqualifying_reasons"].append(
+                f"No data could be fetched for the {role} — ticker not found or "
+                f"SEC EDGAR returned no usable filings."
+            )
         return result
 
     fiscal_years = profile.get("fiscal_years", {})
@@ -361,8 +368,11 @@ def validate_pair(pair: dict) -> dict:
       in either position) fails the pair.
     - Otherwise either company degraded degrades the pair.
     """
-    acq_verdict = validate_company(pair.get("acquirer"), role="acquirer")
-    tgt_verdict = validate_company(pair.get("target"), role="target")
+    fetch_errors = pair.get("fetch_errors", {})
+    acq_verdict = validate_company(pair.get("acquirer"), role="acquirer",
+                                    fetch_error=fetch_errors.get("acquirer"))
+    tgt_verdict = validate_company(pair.get("target"), role="target",
+                                    fetch_error=fetch_errors.get("target"))
 
     combined_reasons = []
     for verdict in (acq_verdict, tgt_verdict):

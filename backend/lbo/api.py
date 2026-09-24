@@ -24,7 +24,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 # Import existing modules (relative — this app is mounted as the `lbo` package)
-from .sec_edgar_test import fetch_ticker_data
+from .sec_edgar_test import fetch_ticker_data, SECMappingUnavailableError
 from .validator import validate
 from .excel_generator import generate_workbook, calculate_revenue_growth_rate
 from .report_generator import (
@@ -551,13 +551,35 @@ async def analyze_ticker(request: Request, body: AnalyzeRequest):
 
     try:
         # Fetch data
-        summary = fetch_ticker_data(
-            ticker=ticker,
-            sec_user_agent=SEC_USER_AGENT,
-            twelve_data_key=TWELVE_DATA_API_KEY or "",
-            verbose=False,
-            skip_price=not bool(TWELVE_DATA_API_KEY),
-        )
+        try:
+            summary = fetch_ticker_data(
+                ticker=ticker,
+                sec_user_agent=SEC_USER_AGENT,
+                twelve_data_key=TWELVE_DATA_API_KEY or "",
+                verbose=False,
+                skip_price=not bool(TWELVE_DATA_API_KEY),
+            )
+        except SECMappingUnavailableError as e:
+            # The company_tickers.json mapping fetch itself failed (e.g. SEC
+            # rate-limiting) — the ticker was never actually checked against
+            # anything, so this must NOT be reported as "ticker not found".
+            return {
+                "ok": False,
+                "ticker": ticker,
+                "validation": {
+                    "status": "fail",
+                    "missingHard": ["Unable to fetch the SEC ticker mapping"],
+                    "missingSoft": [],
+                    "disqualifyingReasons": [str(e)],
+                    "sectorExcluded": False,
+                    "sectorExcludedReason": None,
+                    "defaultsApplied": [],
+                    "substituteWarnings": [],
+                },
+                "nextSteps": [
+                    "Try again in a moment — this is a temporary SEC EDGAR issue, not a problem with the ticker you entered.",
+                ],
+            }
 
         if summary is None:
             return {
@@ -643,13 +665,20 @@ async def generate_model(body: GenerateRequest):
 
     try:
         # Re-fetch data (or use cached - in production use Redis)
-        summary = fetch_ticker_data(
-            ticker=ticker,
-            sec_user_agent=SEC_USER_AGENT,
-            twelve_data_key=TWELVE_DATA_API_KEY or "",
-            verbose=False,
-            skip_price=not bool(TWELVE_DATA_API_KEY),
-        )
+        try:
+            summary = fetch_ticker_data(
+                ticker=ticker,
+                sec_user_agent=SEC_USER_AGENT,
+                twelve_data_key=TWELVE_DATA_API_KEY or "",
+                verbose=False,
+                skip_price=not bool(TWELVE_DATA_API_KEY),
+            )
+        except SECMappingUnavailableError as e:
+            # The company_tickers.json mapping fetch itself failed (e.g. SEC
+            # rate-limiting) — not a data-availability problem with this
+            # specific ticker, so don't phrase it as "unable to fetch data
+            # for {ticker}".
+            raise HTTPException(status_code=503, detail=str(e))
 
         if summary is None:
             raise HTTPException(status_code=400, detail=f"Unable to fetch data for {ticker}")
